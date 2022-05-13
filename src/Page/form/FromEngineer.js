@@ -307,7 +307,7 @@ const submitForm = (e) => {
       <>
       <div className='mainContainer1'>
       <div className='logoimg1'>
-              <img src={imglogo} />
+              <img src={imglogo} alt="logo" />
           </div>
       <div className='containermain'>
      
@@ -510,7 +510,7 @@ const submitForm = (e) => {
 </div>
 <Modal show={show} handleClose={hideModal} loadPage={refreshPage}>
             {modalMessage === "Data Submitted Successfully" ? 
-              <p style={{color:"#6EA55F" ,fontSize:"18px", textAlign:"center", fontFamily:"Georgia"}}>{modalMessage}</p>
+              <p style={{color:"white" ,fontSize:"18px", textAlign:"center", fontFamily:"Georgia"}}>{modalMessage}</p>
               
             :
             <p style={{color:"red", fontSize:"18px" , textAlign:"center", fontFamily:"Georgia"}}>{modalMessage}</p>
