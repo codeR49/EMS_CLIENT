@@ -1,0 +1,504 @@
+.title{
+   font: normal normal bold 33px/42px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    }
+    
+    .property1{
+    
+    text-align: left;
+    font: normal normal normal 14px/16px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    }
+    
+    .property2{
+   
+        text-align: left;
+        font: normal normal normal 14px/16px Georgia;
+        letter-spacing: 0px;
+        color: #9A7036;
+        opacity: 1;
+    }
+    
+    .property3{
+     
+        font: normal normal normal 14px/16px Georgia;
+        letter-spacing: 0px;
+        color: #9A7036;
+        opacity: 1;
+    }
+    
+    .form{
+        margin-top: 30px;
+    }
+    
+    .main2{
+        margin-top: 50px;
+    }
+    
+    .subtitle1{
+    text-align: center;
+    font: normal normal bold 28px/42px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    margin-top: -10px;
+    }
+    
+    .generator1{
+  
+    font: normal normal bold 20px/42px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-bottom: 9px;
+    }
+    
+    .capacity{
+  
+    width: 53px;
+    height: 16px;
+    text-align: left;
+    font: normal normal normal 14px/16px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    margin-left: 10px;
+    }
+    .capacityinput{
+        width: 171px;
+        height: 40px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #9A7036;
+        opacity: 1;
+        color: #CDB89B;
+     
+        }
+    .capacityinput1{
+    width: 171px;
+    height: 40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #9A7036;
+    opacity: 1;
+    color: #CDB89B;
+    
+    }
+    .inputlablegenerator{
+        margin-right: 20px;
+    }
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #CDB89B;
+        opacity: 1; /* Firefox */
+      }
+    
+    .rate1{
+   
+    font: normal normal bold 28px/42px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    }
+    
+    .ratematrix{
+        margin-right: 10px;
+    width: 28px;
+    height: 16px;
+    text-align: left;
+    font: normal normal normal 14px/16px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    }
+    
+    .rateinput{
+        margin-right: 20px;
+    width: 220px;
+    height: 40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #9A7036;
+    opacity: 1;
+    }
+    
+    .weather1{
+    font: normal normal bold 28px/42px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    }
+    
+    .flex-container {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        padding-left: 22px;
+      }
+    
+    .flex-container > div {
+      margin-left: 10px;
+      }
+    
+    .png{
+       
+        font: normal normal bold 28px/42px Georgia;
+        letter-spacing: 0px;
+        color: #9A7036;
+        opacity: 1;
+      }
+    
+    .wc{
+  
+    font: normal normal bold 28px/42px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    }
+    
+    .sg{
+ 
+    font: normal normal bold 28px/42px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    }
+    
+    .kc{
+
+    font: normal normal bold 28px/42px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    }
+    
+    .consumption{
+  
+    font: normal normal normal 14px/16px Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    }
+    
+    .consumptioninput{
+    width: 200px;
+    height: 40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #9A7036;
+    opacity: 1;
+    }
+    
+    
+    .Button{
+    width: 200px;
+    height: 40px;
+    color: white;
+    border: none;
+    background: #F1844D 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    opacity: 1;
+    }
+
+    .containermain{
+        padding-top: 20px;
+        margin-left: 90px;
+        display: flex;
+        flex-direction: column;
+        width: 1000px;
+        height: auto;
+        align-items: center;
+      
+        background-color: white;
+    }
+    .selectiondiv{
+        display: flex;
+        justify-content: center;
+    }
+    .heading{
+        display: flex;
+        justify-content: center;
+        margin-top: -14px;
+        margin-bottom: -15px;
+    }
+    .generator{
+        display: flex;
+     
+        margin-left: 2.5rem;
+        justify-content: flex-start;
+    }
+    .lastdivheading{
+        font-size: x-large;
+        margin-bottom: 23px;
+    font: normal normal bold  Georgia;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    }
+    .submitbtn{
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .margindiv{
+        margin-left: 20px;
+    }
+    .logoimg1{
+        margin-left: 90px;
+        display: flex;
+        justify-content: center;
+      
+   
+  }
+  .mainContainer1{
+    display: flex;
+    flex-direction: column;
+  }
+  /* .margindiv >div{
+ margin-right: 20px;
+  } */
+
+
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+      margin-bottom: 50%;
+    }
+    .generator{
+        flex-direction: column;
+    
+    }
+    .generator >div{
+        margin-top: 2%;
+    }
+    .heading{
+        justify-content: flex-start;
+        margin-left: 5%;
+    }
+    .containermain{
+        width: 100%;
+        margin-left: 10%;
+        height: auto;
+        align-items: center;
+    }
+    .mainContainer1{
+        width: 70%;
+    }
+    .logoimg1{
+        margin-left: 10%;
+    }
+    .title{
+        font-size: x-large;
+        text-align: center;
+    }
+   
+    .subtitle1,.rate1,
+    .lastdivheading,
+    .generator1,.weather1
+    {
+        font-size: medium;  
+    }
+    .lastdivheading{
+        margin-top: 19px;
+        margin-bottom: 10px;
+    }
+    .submitbtn{
+        margin-bottom: 93%;
+        margin-top: -38%;
+    }
+   
+   
+  }
+  @media screen and (min-device-width: 768px) and (max-device-width: 1180px) 
+{
+    .flex-container {
+        flex-direction: column;
+        margin-bottom:  110%;
+      }
+      .generator{
+          flex-direction: column;
+      
+      }
+      .generator >div{
+          margin-top: 2%;
+      }
+      .heading{
+          justify-content: flex-start;
+          margin-left: 5%;
+      }
+      .containermain{
+          width: 82%;
+          margin-left: 10%;
+          height: auto;
+          align-items: center;
+      }
+      .mainContainer1{
+          width: 70%;
+      }
+      .logoimg1{
+          margin-left: 10%;
+      }
+      .title{
+          font-size: x-large;
+          text-align: center;
+      }
+     
+      .subtitle1,.rate1,
+      .lastdivheading,
+      .generator1,.weather1
+      {
+          font-size: medium;  
+      }
+      .lastdivheading{
+          margin-top: 19px;
+          margin-bottom: 10px;
+      }
+      .submitbtn{
+        margin-bottom: 225%;
+          margin-top: -91%;
+      }
+     
+
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+    .modal-main {
+      position:fixed;
+      background: white;
+      width: 30%;
+      height: 20%;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      border-radius: 12px;
+    }
+  
+
+  .display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }
+  .btnmodal{
+    background-color: #F1844D; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100px;
+    height: 40px;
+    border-radius: 6px;
+    margin-left: 180px !important;
+    margin-top: 40px !important;
+}
+.btnmodalsuccess{
+    background-color:#0088ff; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 60px;
+    height: 40px;
+    border-radius: 6px;
+    margin-left: 180px !important;
+    margin-top: 40px !important;
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1180px) {
+    .modal-main {
+        position:fixed;
+        background: white;
+        width: 30%;
+        height: 25%;
+
+   margin-top: -100px;
+   margin-left: 30px;
+      }
+      .btnmodal{
+        background-color: #F1844D; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 0px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 100px;
+        height: 40px;
+        border-radius: 6px;
+      margin-left: 60px !important
+    }
+      
+}
+
+
+@media screen and (min-device-width: 260px) and (max-device-width:740px) {
+    .modal-main {
+        position:fixed;
+        background: white;
+        width: 60%;
+        height: 25%;
+
+   margin-top: -200px;
+
+      }
+      .btnmodal{
+        background-color: #F1844D; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 0px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 100px;
+        height: 40px;
+        border-radius: 6px;
+      margin-left: 60px !important
+    }
+      
+}
+
+@media screen and (min-device-width: 912px) and (max-device-width:1368px) {
+    .modal-main {
+        position:fixed;
+        background: white;
+        width: 30%;
+        height: 15%;
+margin-top: -400px;
+
+
+      }
+      .btnmodal{
+        background-color: #F1844D; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 0px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 100px;
+        height: 40px;
+        border-radius: 6px;
+      margin-left: 60px !important
+    }
+      
+}
