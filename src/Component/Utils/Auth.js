@@ -13,6 +13,7 @@ export const AuthProvider = ({children})=>{
     const logout =()=>{
         console.log('triggered')
         setUser(null)
+        localStorage.clear();
     }
     return(
         <AuthContext.Provider value={{user, login , logout}} >
