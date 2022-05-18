@@ -321,7 +321,7 @@ function ViewDataTable() {
                   size="large"
                   page={page}
 
-                  color="primary"
+                  color="secondary"
                   shape="rounded"
                   onChange={handleChange}
                 />

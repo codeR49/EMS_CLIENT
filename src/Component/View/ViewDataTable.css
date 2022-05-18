@@ -7,7 +7,10 @@ table {
 
    
   }
-  
+  .css-fnnlp4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    color: #fff;
+    background-color: #F1844D !important;
+  }
   td, th {
     border: 1px solid #70707030;
     text-align: center;

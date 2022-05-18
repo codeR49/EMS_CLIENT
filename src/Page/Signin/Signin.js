@@ -12,16 +12,16 @@ import { useAuth } from '../../Component/Utils/Auth';
 
 const Signin = () => {
     const auth = useAuth()
-    // const location = useLocation()
-    // const redireactPath = location.state?.path || '/'
+
     const paperStyle = { padding: 20, height: '60vh', width: 350 }
-    // const avatarStyle = { backgroundColor: '#1bbd7e' }
+
     const btnstyle = { margin: '30px 0', color: "white" }
     const txtstyle = { margin: "10px 0" }
     const signintxtStyle = { marginTop: "40px" }
     let [username, setUsername] = useState('');
     let [password, setPassword] = useState('');
-    // let [loginstatus, setloginstatus] = useState(0);
+    let [errorMessage, setErrorMessage] = useState("");
+
     let message = <h5>Not Logged in</h5>;
     let navigate = useNavigate();
     let onchangeusernamehandler = (event) => {
@@ -41,10 +41,8 @@ const Signin = () => {
         Axios.post(DevelopmentUrl + '/users/login', formdata).then(
             (res) => {
                 let { token } = res.data;
-                //console.log(token);
+
                 localStorage.setItem('token', token);
-                // const toeken = localStorage.getItem("token")
-            
 
                 if (res.status === 200) {
                     let isAdmin = jwt_decode(localStorage.getItem("token")).admin;
@@ -60,10 +58,7 @@ const Signin = () => {
 
                             {!isAdmin ? navigate("/engineer/form", { replace: true }) : navigate("/admin/viewdata", { replace: true })}
                         </Routes>
-                    // <Switch>
-                    //     {!isAdmin ? <Redirect to='/home' /> : <Redirect to='/admin/dashboard' />}
 
-                    // </Switch>
 
                     return message;
 
@@ -72,6 +67,7 @@ const Signin = () => {
         ).catch(error => {
             console.log("error occured")
             console.log(error.data)
+            setErrorMessage("Enter valid Username and Password");
         })
     }
 
@@ -79,7 +75,7 @@ const Signin = () => {
         <div className='' style={{ width: "100%" }} >
 
             <div className='logoimg'>
-                <img src={imglogo} alt="logo"/>
+                <img src={imglogo} alt="logo" />
             </div>
             <div className='maindivimag'>
 
@@ -91,10 +87,13 @@ const Signin = () => {
 
                                     <h2 style={{ color: "#9a7036" }}>Log In</h2>
                                 </Grid>
+
                                 <TextField label='Username' placeholder='Enter username' type='text' id='username' fullWidth style={signintxtStyle} onChange={onchangeusernamehandler} />
                                 <TextField label='Password' placeholder='Enter password' type='password' id='password' fullWidth style={txtstyle} onChange={onchangepasswordhandler} />
-                                <Button type='submit' variant="contained" className="btnlogin" style={btnstyle} fullWidth>Log In</Button>
 
+
+                                <Button type='submit' variant="contained" className="btnlogin" style={btnstyle} fullWidth>Log In</Button>
+                                <p style={{ color: "#F1844D " }}>{errorMessage}</p>
                             </Paper>
                         </Grid>
                     </form>
