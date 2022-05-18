@@ -35,12 +35,14 @@ function Sidebar() {
     </div>
     <div className="sidebar-bottom">
        <ul className='list'>
+       <Link to="/" className='Link'>
        <li className="list-item">
-            <Link to="/" className='Link'>
+            
             <i className="list-item-icon fas fa-sign-out-alt"></i>
                 <span className="list-item-text" onClick={logoutHnadler}>logout</span>
-            </Link>
+         
             </li>
+            </Link>
        </ul>
     </div>
 </div>

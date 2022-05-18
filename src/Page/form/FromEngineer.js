@@ -486,7 +486,7 @@ const Form = () => {
             </div>
             <Modal show={show} handleClose={hideModal} loadPage={refreshPage}>
               {modalMessage === "Data Submitted Successfully" ?
-                <p style={{ color: "#0088ff", fontSize: "18px", textAlign: "center", fontFamily: "Georgia" }}>{modalMessage}</p>
+                <p style={{ color: "#9A7033", fontSize: "18px", textAlign: "center", fontFamily: "Georgia" }}>{modalMessage}</p>
 
                 :
                 <p style={{ color: "red", fontSize: "18px", textAlign: "center", fontFamily: "Georgia" }}>{modalMessage}</p>
