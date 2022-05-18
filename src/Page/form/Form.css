@@ -232,7 +232,7 @@
     .lastdivheading{
         font-size: x-large;
         margin-bottom: 23px;
-    font:  20px normal normal bold  Georgia;
+        font: normal normal bold 18px Georgia;
     letter-spacing: 0px;
     color: #9A7036;
     opacity: 1;
@@ -418,7 +418,7 @@
     width: 60px;
     height: 40px;
     border-radius: 6px;
-    margin-left: 180px !important;
+    margin-left: 200px !important;
     margin-top: 40px !important;
 }
 
