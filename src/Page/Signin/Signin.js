@@ -45,18 +45,17 @@ const Signin = () => {
                 localStorage.setItem('token', token);
 
                 if (res.status === 200) {
-                    let isAdmin = jwt_decode(localStorage.getItem("token")).admin;
+                    let roles = jwt_decode(localStorage.getItem("token")).roles;
                     let name = jwt_decode(localStorage.getItem("token")).name;
-                    let designation = jwt_decode(localStorage.getItem("token")).designation;
-                    localStorage.setItem("admin", isAdmin);
+                    let location = jwt_decode(localStorage.getItem("token")).location;                    ;
+                    localStorage.setItem("roles", roles);
                     localStorage.setItem("name", name);
-                    localStorage.setItem("designation", designation);
-                    console.log(isAdmin)
+                    localStorage.setItem("location", location);
                     auth.login()
                     message =
                         <Routes>
 
-                            {!isAdmin ? navigate("/engineer/form", { replace: true }) : navigate("/admin/viewdata", { replace: true })}
+                            {roles === "Director" ? navigate("/director/viewdata", { replace: true }): roles === "Remote Engineer"? navigate("/engineer/form", { replace: true }): navigate("/gm/viewdata", { replace: true })}
                         </Routes>
 
 
