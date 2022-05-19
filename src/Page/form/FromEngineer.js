@@ -37,7 +37,7 @@ const Form = () => {
   dateToday = yyyy + '-' + mm + '-' + dd;
 
   const token = localStorage.getItem("token");
-  const [place, setPlace] = useState()
+  const place = localStorage.getItem("location");
   const [capacity, setCapacity] = useState()
   const [generation, setGeneration] = useState()
   const [timerun, setRunTime] = useState()
@@ -289,19 +289,12 @@ const Form = () => {
 
           <div className='heading'>
             <h2 className='title'>Daily Power Consumption Log {dateToday} </h2>
+         
           </div>
+
           <form className='form ' onSubmit={submitForm}>
             <div className='selectiondiv'>
-
-
-              <input type="radio" checked={place === 'Coorg'} value="Coorg" onClick={() => setPlace('Coorg')} />
-              <label className='property1'>Coorg</label>
-              <input type="radio" checked={place === 'Hampi'} value="Hampi" onClick={() => setPlace('Hampi')} />
-              <label className='property2'>Hampi</label>
-              <input type="radio" checked={place === 'Kabini'} value="Kabini" onClick={() => setPlace('Kabini')} />
-              <label className='property3'>Kabini</label>
-
-
+              <h3 style={{color:"#9A7036"}}>{place}</h3>
             </div>
 
             <div className='main2'>

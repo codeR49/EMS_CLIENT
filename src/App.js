@@ -28,7 +28,7 @@ function App() {
       
       <Route exact path="/" element={<Signin />}/>
       <Route exact path="/home" element={<RequireAuth><Home/></RequireAuth>}/>
-      <Route exact path="/admin/viewdata" element={<RequireAuth><AdminDashbord/>  </RequireAuth>}/>
+      <Route exact path="/director/viewdata" element={<RequireAuth><AdminDashbord/>  </RequireAuth>}/>
       <Route exact path="/engineer/form" element={<RequireAuth><EngineerForm/></RequireAuth>}/>
       <Route exact path="/gm/viewdata" element={<RequireAuth><GeneralManager/></RequireAuth>}/> 
          

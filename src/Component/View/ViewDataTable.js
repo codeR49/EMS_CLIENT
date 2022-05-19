@@ -35,7 +35,7 @@ function ViewDataTable() {
   }
 
   useEffect(() => {
-    axios.get(DevelopmentUrl + '/consume', {
+    axios.get(DevelopmentUrl + '/consume/approve', {
       headers: {
 
         "Authorization": `bearer ${token}`

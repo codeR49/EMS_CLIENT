@@ -2,9 +2,9 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../Utils/Auth';
 import avtar from "../../image/default-avatar-profile-icon-vector-18942381.png"
-import "./Adminsidebar.css"
+import "../AdminSidebar/Adminsidebar.css"
 
-function Adminsidebar() {
+function Gmsidebar() {
     const auth = useAuth()
     let navigate = useNavigate()
     const logoutHnadler = (e) =>{
@@ -21,7 +21,7 @@ function Adminsidebar() {
             </div>
     <div className="sidebar-center">
         <ul className="list">
-        <Link to='/director/viewdata' className='Link'>
+        <Link to='/gm/viewdata' className='Link'>
             <li className="list-item">
      
               <i className="list-item-icon fas fa-file"></i>
@@ -48,4 +48,4 @@ function Adminsidebar() {
   )
 }
 
-export default Adminsidebar
+export default Gmsidebar

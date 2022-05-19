@@ -20,7 +20,7 @@ function Sidebar() {
     <div class="profile">
                 <img src={avtar}alt="profile_picture"/>
                 <h3>{localStorage.getItem("name")}</h3>
-                <p>{localStorage.getItem("designation")}</p>
+                <p>{localStorage.getItem("roles")}</p>
             </div>
     <div className="sidebar-center">
         <ul className="list">
