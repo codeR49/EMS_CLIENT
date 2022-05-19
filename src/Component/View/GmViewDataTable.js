@@ -6,9 +6,8 @@ import { Pagination, Stack } from '@mui/material';
 import DevelopmentUrl from "../../data/api";
 import imglogo from '../../image/logo.png'
 
-function ViewDataTable() {
-
-  const token = localStorage.getItem("token");
+function GmViewDataTable() {
+    const token = localStorage.getItem("token");
 
   const [datefrom, setDatefrom] = useState();
   const [dateto, setDateto] = useState();
@@ -69,7 +68,6 @@ function ViewDataTable() {
       
 
   };
-
   return (
     <>
       <div className='mainContainer'>
@@ -78,34 +76,7 @@ function ViewDataTable() {
         </div>
         <div className='table-responsive'>
 
-          <div className='maindiv' style={{ display: "flex" }}>
-
-
-            <div>
-              <label style={{ color: "#F1844D", fontSize: "14px" }}>Choose Property</label>
-              <br />
-              <select name="Property" className='form-control' onChange={locationHandleChange}>
-                <option >Select Property</option>
-                <option value="Coorg">Coorg</option>
-                <option value="Hampi">Hampi</option>
-                <option value="Kabini">Kabini</option>
-
-              </select>
-
-            </div>
-            <div className='lbl'>
-              <label style={{ color: "#F1844D", fontSize: "14px" }}>From Date</label><br />
-              <input type="date" className='form-control ' onChange={datefromHandleChange} />
-            </div>
-            <div className='lbl'>
-              <label style={{ color: "#F1844D", fontSize: "14px" }}>To Date</label>
-              <br />
-              <input type="date" className='form-control ' onChange={datetoHandleChange} />
-            </div>
-            <button className='btnsearch' onClick={submitHandler}>Search</button>
-          
-          </div>
-          <br />
+         
 
           {
             filter.length > 0? <>
@@ -343,4 +314,4 @@ function ViewDataTable() {
   )
 }
 
-export default ViewDataTable
+export default GmViewDataTable

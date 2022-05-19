@@ -13,6 +13,7 @@ import EngineerForm from "./Page/Layouts/EngineerForm";
 import { AuthProvider } from "./Component/Utils/Auth";
 import RequireAuth from "./Component/ProtectedRoute/RequireAuth";
 import AdminDashbord from "./Page/Layouts/AdminDashbord";
+import GeneralManager from "./Page/Layouts/GeneralManager";
 
 
 
@@ -29,7 +30,7 @@ function App() {
       <Route exact path="/home" element={<RequireAuth><Home/></RequireAuth>}/>
       <Route exact path="/admin/viewdata" element={<RequireAuth><AdminDashbord/>  </RequireAuth>}/>
       <Route exact path="/engineer/form" element={<RequireAuth><EngineerForm/></RequireAuth>}/>
-         
+      <Route exact path="/gm/viewdata" element={<RequireAuth><GeneralManager/></RequireAuth>}/> 
          
           
       </Routes>
