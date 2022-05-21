@@ -6,6 +6,31 @@ import { Pagination, Stack } from '@mui/material';
 import DevelopmentUrl from "../../data/api";
 import imglogo from '../../image/logo.png'
 
+
+const Modal = ({ modal, handleClose, children, approve, disapprove, showId }) => {
+  const showHideClassName = modal ? 'modal display-block' : 'modal display-none';
+  // console.log(showId);
+  
+  
+  return (
+    <div className={showHideClassName}>
+      <section className='modal-main'>
+        <p>{children}</p>
+        
+        <button className='btnapprove'
+          onClick={() => approve(showId)}>
+          Approve
+        </button>
+
+        <button   className='btnmdl'
+          onClick={() => disapprove(showId)}>
+          DisApprove
+        </button>
+      </section>
+    </div>
+  );
+};
+
 function GmViewDataTable() {
   const token = localStorage.getItem("token");
   const location = localStorage.getItem("location");
@@ -14,8 +39,8 @@ function GmViewDataTable() {
   const [consumeData, setConsumeData] = useState([]);
   const [filter, setFilter] = useState([]);
   const [show, setShow] = useState(false);
-  // const [showApprove, setShowApprove] = useState(false);
 
+  const [showId, setShowId] = useState();
   let [page, setPage] = useState(1);
   const PER_PAGE = 15;
 
@@ -29,6 +54,16 @@ function GmViewDataTable() {
     console.log(e.target.value);
   }
 
+  const [modal, setModal] = useState(false);
+  const showModal = (id) => {
+    setModal(true);
+    setShowId(id)
+  }
+
+  const hideModal = () => {
+    setModal(false);
+
+  }
 
   useEffect(() => {
     axios.get(DevelopmentUrl + '/consume', {
@@ -67,6 +102,7 @@ function GmViewDataTable() {
 
   const approve = (id) => {
     // console.log(id);
+    
     let formdata = {
       status: true
     };
@@ -80,11 +116,42 @@ function GmViewDataTable() {
     })
       .then(res => {
         console.log(res)
-       
         // setShowApprove(true);
       })
       .catch(err => console.log(err));
 
+  }
+
+  const disapprove = (id) => {
+    // console.log(id);
+    let formdata = {
+      status: false
+    };
+
+
+    axios.put(DevelopmentUrl + `/consume/approvedisapprove/${id}`, formdata, {
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `bearer ${token}`
+      }
+    })
+      .then(res => {
+        console.log(res)
+        // setShowApprove(true);
+      })
+      .catch(err => console.log(err));
+
+  }
+
+  function Mybutton({ value, onClick, style }) {
+    return (<button style={{
+      backgroundColor: `${style}`, cursor: "pointer", border: "none", color: "white", width: "80px", borderRadius: "4px", height: "30px", marginleft: "5px",
+      marginright: "5px",
+    }}
+      onClick={() => onClick()}
+    >
+      {value}
+    </button>)
   }
 
 
@@ -116,12 +183,12 @@ function GmViewDataTable() {
             </div> */}
             <div className='lbl'>
               <label style={{ color: "#F1844D", fontSize: "14px" }}>From Date</label><br />
-              <input type="date" className='form-control ' onChange={datefromHandleChange} />
+              <input type="date" className='form-control ' max={new Date().toISOString().split("T")[0]} onChange={datefromHandleChange} />
             </div>
             <div className='lbl'>
               <label style={{ color: "#F1844D", fontSize: "14px" }}>To Date</label>
               <br />
-              <input type="date" className='form-control ' onChange={datetoHandleChange} />
+              <input type="date" className='form-control ' max={new Date().toISOString().split("T")[0]} onChange={datetoHandleChange} />
             </div>
             <button className='btnsearch' onClick={submitHandler}>Search</button>
 
@@ -133,7 +200,7 @@ function GmViewDataTable() {
               {/* <button className='btnexport' >Export Data</button> */}
               <table >
                 <tr>
-                  <th >Status</th>
+                  <th >Action</th>
                   <th>Date</th>
                   <th >Time</th>
                   <th >KEB Consumption (in Units)</th>
@@ -160,28 +227,12 @@ function GmViewDataTable() {
                     return (
                       <>
                         <tr>
-                          <td>{data.status == false ? 
-                            <span>
-                              <button style={{ backgroundColor: "#9A7036", cursor: "pointer",   border: "none", color: "white", width: "80px", borderRadius: "4px" ,height:"30px",  marginleft: "5px",
-                            marginright: "5px",}}
-                                onClick={() => approve(data._id)}
-                              >
-                                Validate It
-                              </button>
-                            </span>
 
-                         
-
-                            :  <button style={{ backgroundColor: "#F1844D", border: "none", alignItems:"center",    marginleft: "5px",
-                            marginright: "5px", color: "white", width: "80px", borderRadius: "4px" ,height:"30px"}}
+                          <td>
+                          {data.status === true ? "Approved": <button type="submit" onClick={() => showModal(data._id)}>Pending</button>}
                           
-                          >
-                            Validated
-                          </button>
-
-                          }
- </td>
-
+                            {/* <Mybutton onClick={() => approve(data._id)} value={data.status == false ? showApprove : "Approved"} style={data.status == false ? "#9A7036" : "#F1844D"} /> */}
+                          </td>
                           {/* {console.log(typeof(data.date))} */}
                           <td style={{
                             fontSize: "12px",
@@ -381,6 +432,11 @@ function GmViewDataTable() {
 
         </div>
 
+        <Modal modal={modal} handleClose={hideModal} showId={showId} approve={approve} disapprove={disapprove}>
+
+          <p style={{textAlign:"center"}}>Do you want to approve</p>
+
+        </Modal>
       </div>
 
     </>

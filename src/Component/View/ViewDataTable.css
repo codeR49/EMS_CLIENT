@@ -91,6 +91,39 @@ margin-left: 30px !important;
     width: 90%;
    
   }
+  .btnmdl{
+    background-color:#F1844D; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 90px;
+    height: 40px;
+    border-radius: 6px;
+    margin-left: 130px;
+
+  }
+  .btnapprove{
+    background-color:#F1844D; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 80px;
+    height: 40px;
+    border-radius: 6px;
+    margin-left: 80px !important;
+    margin-top: 40px !important;
+}
+.text{
+    margin-left: 120px !important;
+}
 
 @media screen and (max-width: 767px) {
     .table-responsive {

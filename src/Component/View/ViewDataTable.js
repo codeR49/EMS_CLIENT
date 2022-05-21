@@ -70,6 +70,9 @@ function ViewDataTable() {
 
   };
 
+ 
+
+
   return (
     <>
       <div className='mainContainer'>
@@ -95,12 +98,13 @@ function ViewDataTable() {
             </div>
             <div className='lbl'>
               <label style={{ color: "#F1844D", fontSize: "14px" }}>From Date</label><br />
-              <input type="date" className='form-control ' onChange={datefromHandleChange} />
+              <input type="date" className='form-control '  max={new Date().toISOString().split("T")[0]}  onChange={datefromHandleChange} />
             </div>
             <div className='lbl'>
               <label style={{ color: "#F1844D", fontSize: "14px" }}>To Date</label>
               <br />
-              <input type="date" className='form-control ' onChange={datetoHandleChange} />
+              <input type="date" className='form-control '  max={new Date().toISOString().split("T")[0]}  onChange={datetoHandleChange} />
+
             </div>
             <button className='btnsearch' onClick={submitHandler}>Search</button>
           
@@ -109,7 +113,7 @@ function ViewDataTable() {
 
           {
             filter.length > 0? <>
-              {/* <button className='btnexport' >Export Data</button> */}
+              {/* <button className='btnsearch' style={{marginl}}>Export Data</button> */}
             <table >
               <tr>
                 <th>Date</th>
