@@ -7,25 +7,28 @@ import DevelopmentUrl from "../../data/api";
 import imglogo from '../../image/logo.png'
 
 
-const Modal = ({ modal, handleClose, children, approve, disapprove, showId }) => {
+const Modal = ({ modal, approvemessage, refreshPage, children, approve, showId }) => {
   const showHideClassName = modal ? 'modal display-block' : 'modal display-none';
-  // console.log(showId);
-  
-  
+
   return (
     <div className={showHideClassName}>
-      <section className='modal-main'>
+      <section className='modal-main-gm-data'>
         <p>{children}</p>
-        
-        <button className='btnapprove'
-          onClick={() => approve(showId)}>
-          Approve
-        </button>
+        {approvemessage == null ?
+          <button className='btnapprove' style={{ cursor: 'pointer' }}
+            onClick={() => approve(showId)}>
+            Approve
+          </button>
+          :
 
-        <button   className='btnmdl'
-          onClick={() => disapprove(showId)}>
-          DisApprove
-        </button>
+          <button className='btnapprove' style={{ cursor: 'pointer' }}
+            onClick={refreshPage}>
+            Ok
+          </button>
+
+        }
+
+
       </section>
     </div>
   );
@@ -36,10 +39,11 @@ function GmViewDataTable() {
   const location = localStorage.getItem("location");
   const [datefrom, setDatefrom] = useState();
   const [dateto, setDateto] = useState();
+  const [remark, setRemark] = useState();
   const [consumeData, setConsumeData] = useState([]);
   const [filter, setFilter] = useState([]);
   const [show, setShow] = useState(false);
-
+  const [approvemessage, setApprovemessage] = useState();
   const [showId, setShowId] = useState();
   let [page, setPage] = useState(1);
   const PER_PAGE = 15;
@@ -60,9 +64,12 @@ function GmViewDataTable() {
     setShowId(id)
   }
 
-  const hideModal = () => {
-    setModal(false);
+  // const hideModal = () => {
+  //   setModal(false);
 
+  // }
+  const refreshPage = () => {
+    window.location.reload();
   }
 
   useEffect(() => {
@@ -101,10 +108,10 @@ function GmViewDataTable() {
   };
 
   const approve = (id) => {
-    // console.log(id);
-    
+
     let formdata = {
-      status: true
+      remark: remark,
+      status: true,
     };
 
 
@@ -116,50 +123,35 @@ function GmViewDataTable() {
     })
       .then(res => {
         console.log(res)
-        // setShowApprove(true);
+        setApprovemessage("Data approved");
       })
-      .catch(err => console.log(err));
-
-  }
-
-  const disapprove = (id) => {
-    // console.log(id);
-    let formdata = {
-      status: false
-    };
-
-
-    axios.put(DevelopmentUrl + `/consume/approvedisapprove/${id}`, formdata, {
-      headers: {
-        "Content-type": "application/json",
-        "Authorization": `bearer ${token}`
-      }
-    })
-      .then(res => {
-        console.log(res)
-        // setShowApprove(true);
+      .catch(err => {
+        console.log(err);
       })
-      .catch(err => console.log(err));
 
   }
 
-  function Mybutton({ value, onClick, style }) {
-    return (<button style={{
-      backgroundColor: `${style}`, cursor: "pointer", border: "none", color: "white", width: "80px", borderRadius: "4px", height: "30px", marginleft: "5px",
-      marginright: "5px",
-    }}
-      onClick={() => onClick()}
-    >
-      {value}
-    </button>)
-  }
+  const handleRemarks = (e) => {
+    console.log(e.target.value);
+    setRemark(e.target.value)
 
+  }
+  // function Mybutton({ value, onClick, style }) {
+  //   return (<button style={{
+  //     backgroundColor: `${style}`, cursor: "pointer", border: "none", color: "white", width: "80px", borderRadius: "4px", height: "30px", marginleft: "5px",
+  //     marginright: "5px",
+  //   }}
+  //     onClick={() => onClick()}
+  //   >
+  //     {value}
+  //   </button>)
+  // }
 
   return (
     <>
       <div className='mainContainer'>
         <div className='logoimg2'>
-          <img src={imglogo} />
+          <img src={imglogo} alt="logo"/>
         </div>
         <div className='table-responsive'>
 
@@ -168,19 +160,6 @@ function GmViewDataTable() {
           </h3>
           <div className='maindiv' style={{ display: "flex" }}>
 
-
-            {/* <div>
-              <label style={{ color: "#F1844D", fontSize: "14px" }}>Choose Property</label>
-              <br />
-              <select name="Property" className='form-control' onChange={locationHandleChange}>
-                <option >Select Property</option>
-                <option value="Coorg">Coorg</option>
-                <option value="Hampi">Hampi</option>
-                <option value="Kabini">Kabini</option>
-
-              </select>
-
-            </div> */}
             <div className='lbl'>
               <label style={{ color: "#F1844D", fontSize: "14px" }}>From Date</label><br />
               <input type="date" className='form-control ' max={new Date().toISOString().split("T")[0]} onChange={datefromHandleChange} />
@@ -189,15 +168,15 @@ function GmViewDataTable() {
               <label style={{ color: "#F1844D", fontSize: "14px" }}>To Date</label>
               <br />
               <input type="date" className='form-control ' max={new Date().toISOString().split("T")[0]} onChange={datetoHandleChange} />
+              {datefrom > dateto ? <p style={{ fontSize: "12px", color: "#F1844D", fontWeight: "bold" }}>To Date must be greater than From Date</p> : ''}
             </div>
-            <button className='btnsearch' onClick={submitHandler}>Search</button>
-
+            <button disabled={(datefrom > dateto)} className='btnsearch' onClick={submitHandler}>Search</button>
           </div>
+
           <br />
 
           {
-            filter.length > 0 ? <>
-              {/* <button className='btnexport' >Export Data</button> */}
+            filter.length > 0 && datefrom < dateto ? <>
               <table >
                 <tr>
                   <th >Action</th>
@@ -229,11 +208,10 @@ function GmViewDataTable() {
                         <tr>
 
                           <td>
-                          {data.status === true ? "Approved": <button type="submit" onClick={() => showModal(data._id)}>Pending</button>}
-                          
+                            {data.status === true ? "Approved" : <button type="submit" className='btnpending' onClick={() => showModal(data._id)}>Pending</button>}
+
                             {/* <Mybutton onClick={() => approve(data._id)} value={data.status == false ? showApprove : "Approved"} style={data.status == false ? "#9A7036" : "#F1844D"} /> */}
                           </td>
-                          {/* {console.log(typeof(data.date))} */}
                           <td style={{
                             fontSize: "12px",
                             fontFamily: "Georgia, Regular"
@@ -250,8 +228,6 @@ function GmViewDataTable() {
                             <table>
 
                               <tr>
-
-
                                 <table>
 
                                   {data.generator.map((details) => {
@@ -285,7 +261,7 @@ function GmViewDataTable() {
                                   })}
 
                                   <tr>
-                                    {/* <td></td> */}
+
                                     <td colSpan="2" style={{
                                       fontSize: "12px",
                                       fontFamily: "Georgia, Regular"
@@ -426,16 +402,13 @@ function GmViewDataTable() {
             </> : show ? <p>Data Not Found </p> : ""
 
           }
-
-
-
-
         </div>
 
-        <Modal modal={modal} handleClose={hideModal} showId={showId} approve={approve} disapprove={disapprove}>
+        <Modal modal={modal} approvemessage={approvemessage} refreshPage={refreshPage} showId={showId} approve={approve}>
 
-          <p style={{textAlign:"center"}}>Do you want to approve</p>
-
+          <p className='text'>Remarks</p>
+          <textarea onChange={handleRemarks} rows="2" placeholder='Write Some Comments' />
+          <p className='text' style={{ color: "red" }}>{approvemessage}</p>
         </Modal>
       </div>
 
