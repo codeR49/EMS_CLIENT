@@ -104,15 +104,15 @@ function ViewDataTable() {
               <label style={{ color: "#F1844D", fontSize: "14px" }}>To Date</label>
               <br />
               <input type="date" className='form-control '  max={new Date().toISOString().split("T")[0]}  onChange={datetoHandleChange} />
-
+              {datefrom > dateto ? <p style={{fontSize: "12px",color: "#F1844D",fontWeight:"bold"}}>To Date must be greater than From Date</p> : ''}
             </div>
-            <button className='btnsearch' onClick={submitHandler}>Search</button>
+            <button disabled={(datefrom > dateto)} className='btnsearch' onClick={submitHandler}>Search</button>
           
           </div>
           <br />
 
           {
-            filter.length > 0? <>
+            filter.length > 0 && datefrom < dateto ? <>
               {/* <button className='btnsearch' style={{marginl}}>Export Data</button> */}
             <table >
               <tr>
