@@ -7,7 +7,7 @@ import DevelopmentUrl from "../../data/api";
 import imglogo from '../../image/logo.png'
 
 
-const Modal = ({ modal, approvemessage, refreshPage, children, approve, showId }) => {
+const Modal = ({ modal, hide, approvemessage, refreshPage, children, approve, showId }) => {
   const showHideClassName = modal ? 'modal display-block' : 'modal display-none';
 
   return (
@@ -27,7 +27,11 @@ const Modal = ({ modal, approvemessage, refreshPage, children, approve, showId }
           </button>
 
         }
-
+        <button className='canclebtn' style={{ cursor: 'pointer' }}
+        onClick={hide}
+        >
+          Cancel
+        </button>
 
       </section>
     </div>
@@ -64,10 +68,10 @@ function GmViewDataTable() {
     setShowId(id)
   }
 
-  // const hideModal = () => {
-  //   setModal(false);
+  const hideModal = () => {
+    setModal(false);
 
-  // }
+  }
   const refreshPage = () => {
     window.location.reload();
   }
@@ -151,7 +155,7 @@ function GmViewDataTable() {
     <>
       <div className='mainContainer'>
         <div className='logoimg2'>
-          <img src={imglogo} alt="logo"/>
+          <img src={imglogo} alt="logo" />
         </div>
         <div className='table-responsive'>
 
@@ -404,10 +408,10 @@ function GmViewDataTable() {
           }
         </div>
 
-        <Modal modal={modal} approvemessage={approvemessage} refreshPage={refreshPage} showId={showId} approve={approve}>
+        <Modal modal={modal} hide={hideModal} approvemessage={approvemessage} refreshPage={refreshPage} showId={showId} approve={approve}>
 
           <p className='text'>Remarks</p>
-          <textarea onChange={handleRemarks} rows="2" placeholder='Write Some Comments' />
+          <textarea onChange={handleRemarks} rows="5" placeholder='Write Some Comments' className='form-control' />
           <p className='text' style={{ color: "red" }}>{approvemessage}</p>
         </Modal>
       </div>
