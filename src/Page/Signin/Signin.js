@@ -9,6 +9,7 @@ import imglogo from '../../image/logo.png'
 import "../Signin/Signin.css";
 
 import { useAuth } from '../../Component/Utils/Auth';
+import EyeIcon from '../../Component/EyeIcon/EyeIcon';
 
 const Signin = () => {
     const auth = useAuth()
@@ -21,6 +22,7 @@ const Signin = () => {
     let [username, setUsername] = useState('');
     let [password, setPassword] = useState('');
     let [errorMessage, setErrorMessage] = useState("");
+    const [isPasswordShow, setIsPasswordShow] = useState(false);
 
     let message = <h5>Not Logged in</h5>;
     let navigate = useNavigate();
@@ -69,7 +71,9 @@ const Signin = () => {
             setErrorMessage("Enter valid Username and Password");
         })
     }
-
+    const toggleIsPasswordShowValue = () => {
+        setIsPasswordShow(!isPasswordShow);
+    };
     return (
         <div className='' style={{ width: "100%" }} >
 
@@ -88,9 +92,13 @@ const Signin = () => {
                                 </Grid>
 
                                 <TextField label='Username' placeholder='Enter username' type='text' id='username' fullWidth style={signintxtStyle} onChange={onchangeusernamehandler} />
-                                <TextField label='Password' placeholder='Enter password' type='password' id='password' fullWidth style={txtstyle} onChange={onchangepasswordhandler} />
+                                <TextField label='Password' placeholder='Enter password' type={ isPasswordShow ? 'text' : 'password'} id='password' fullWidth style={txtstyle} onChange={onchangepasswordhandler} />
 
-
+                                {password && (
+                                            <Button className='eye-icon' onClick={toggleIsPasswordShowValue}>
+                                                <EyeIcon />
+                                            </Button>
+                                        )}
                                 <Button type='submit' variant="contained" className="btnlogin" style={btnstyle} fullWidth>Log In</Button>
                                 <p style={{ color: "#F1844D " }}>{errorMessage}</p>
                             </Paper>
