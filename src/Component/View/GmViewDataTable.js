@@ -27,11 +27,11 @@ const Modal = ({ modal, hide, approvemessage, refreshPage, children, approve, sh
           </button>
 
         }
-        <button className='canclebtn' style={{ cursor: 'pointer' }}
+        {/* <button className='canclebtn' style={{ cursor: 'pointer' }}
         onClick={hide}
         >
           Cancel
-        </button>
+        </button> */}
 
       </section>
     </div>
@@ -410,8 +410,9 @@ function GmViewDataTable() {
 
         <Modal modal={modal} hide={hideModal} approvemessage={approvemessage} refreshPage={refreshPage} showId={showId} approve={approve}>
 
-          <p className='text'>Remarks</p>
-          <textarea onChange={handleRemarks} rows="5" placeholder='Write Some Comments' className='form-control' />
+          <p className='text'>GM Action</p>
+          
+          <textarea onChange={handleRemarks} rows="5" placeholder='Write Your Remarks' className='form-control' />
           <p className='text' style={{ color: "red" }}>{approvemessage}</p>
         </Modal>
       </div>
