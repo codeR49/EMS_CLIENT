@@ -6,6 +6,20 @@ import { Pagination, Stack } from '@mui/material';
 import DevelopmentUrl from "../../data/api";
 import imglogo from '../../image/logo.png'
 
+
+const Modal = ({ modal, hide, children }) => {
+  const showHideClassName = modal ? 'modal display-block' : 'modal display-none';
+
+  return (
+    <div className={showHideClassName}>
+      <section className='modal-main-gm-data'>
+        <p>{children}</p>
+      <button onClick={hide} className='canclebtn' style={{ cursor: 'pointer' }}>Ok</button>
+      </section>
+    </div>
+  );
+};
+
 function ViewDataTable() {
 
   const token = localStorage.getItem("token");
@@ -66,11 +80,21 @@ function ViewDataTable() {
 
     setPage(p);
     _DATA.jump(p);
-      
+
 
   };
 
- 
+  const [modal, setModal] = useState(false);
+  const [showRemark, setShowRemark] = useState();
+  const showModal = (remark) => {
+    setModal(true);
+    setShowRemark(remark)
+  }
+
+  const hideModal = () => {
+    setModal(false);
+
+  }
 
 
   return (
@@ -98,229 +122,246 @@ function ViewDataTable() {
             </div>
             <div className='lbl'>
               <label style={{ color: "#F1844D", fontSize: "14px" }}>From Date</label><br />
-              <input type="date" className='form-control '  max={new Date().toISOString().split("T")[0]}  onChange={datefromHandleChange} />
+              <input type="date" className='form-control ' max={new Date().toISOString().split("T")[0]} onChange={datefromHandleChange} />
             </div>
             <div className='lbl'>
               <label style={{ color: "#F1844D", fontSize: "14px" }}>To Date</label>
               <br />
-              <input type="date" className='form-control '  max={new Date().toISOString().split("T")[0]}  onChange={datetoHandleChange} />
-              {datefrom > dateto ? <p style={{fontSize: "12px",color: "#F1844D",fontWeight:"bold"}}>To Date must be greater than From Date</p> : ''}
+              <input type="date" className='form-control ' max={new Date().toISOString().split("T")[0]} onChange={datetoHandleChange} />
+              {datefrom > dateto ? <p style={{ fontSize: "12px", color: "#F1844D", fontWeight: "bold" }}>To Date must be greater than From Date</p> : ''}
             </div>
             <button disabled={(datefrom > dateto)} className='btnsearch' onClick={submitHandler}>Search</button>
-          
+
           </div>
           <br />
 
           {
             filter.length > 0 && datefrom < dateto ? <>
               {/* <button className='btnsearch' style={{marginl}}>Export Data</button> */}
-            <table >
-              <tr>
-                <th>Date</th>
-                <th >Time</th>
-                <th >KEB Consumption (in Units)</th>
-                <th>Generator Usage
+              <table >
+                <tr>
+                  <th>Date</th>
+                  <th >Time</th>
+                  <th >KEB Consumption (in Units)</th>
+                  <th>Generator Usage
 
-                  <table>
-                    <th>Generator Name</th>
-                    <th>Capacity</th>
-                    <th>Generation</th>
-                    <th>Time Run</th>
-                    <th>Diesel Consumption</th>
-                  </table>
+                    <table>
+                      <th>Generator Name</th>
+                      <th>Capacity</th>
+                      <th>Generation</th>
+                      <th>Time Run</th>
+                      <th>Diesel Consumption</th>
+                    </table>
 
-                </th>
-                <th>Kitchen (PNG)</th>
-                <th>Water consumption</th>
-                <th>Weather Parameters</th>
-                <th>Rate Matrix</th>
-                <th>Solar Generation</th>
-              </tr>
+                  </th>
+                  <th>Kitchen (PNG)</th>
+                  <th>Water consumption</th>
+                  <th>Weather Parameters</th>
+                  <th>Rate Matrix</th>
+                  <th>Solar Generation</th>
+                  <th>Remarks</th>
+                </tr>
 
-              <tbody>
-                {_DATA.currentData().map((data) => {
-                  return (
-                    <>
-                      <tr>
-                        {/* {console.log(typeof(data.date))} */}
-                        <td style={{
-                          fontSize: "12px",
-                          fontFamily: "Georgia, Regular"
-                        }}>{data.date}</td>
-                        <td style={{
-                          fontSize: "12px",
-                          fontFamily: "Georgia, Regular"
-                        }}>{data.timeofrecording}</td>
-                        <td style={{
-                          fontSize: "12px",
-                          fontFamily: "Georgia, Regular"
-                        }}>{data.keb}</td>
-                        <td>
-                          <table>
+                <tbody>
+                  {_DATA.currentData().map((data) => {
+                    return (
+                      <>
+                        <tr>
+                          {/* {console.log(typeof(data.date))} */}
+                          <td style={{
+                            fontSize: "12px",
+                            fontFamily: "Georgia, Regular"
+                          }}>{data.date}</td>
+                          <td style={{
+                            fontSize: "12px",
+                            fontFamily: "Georgia, Regular"
+                          }}>{data.timeofrecording}</td>
+                          <td style={{
+                            fontSize: "12px",
+                            fontFamily: "Georgia, Regular"
+                          }}>{data.keb}</td>
+                          <td>
+                            <table>
 
-                            <tr>
-
-
-                              <table>
-
-                                {data.generator.map((details) => {
-                                  return (
-                                    <>
-                                      <tr>
-                                        <td style={{
-                                          fontSize: "12px",
-                                          fontFamily: "Georgia, Regular"
-                                        }}>{details.generatorname}</td>
-                                        <td style={{
-                                          fontSize: "12px",
-                                          fontFamily: "Georgia, Regular"
-                                        }}>{details.capacity}</td>
-                                        <td style={{
-                                          fontSize: "12px",
-                                          fontFamily: "Georgia, Regular"
-                                        }}>{details.generation}</td>
-                                        <td style={{
-                                          fontSize: "12px",
-                                          fontFamily: "Georgia, Regular"
-                                        }}>{details.timerun} Hr</td>
-                                        <td style={{
-                                          fontSize: "12px",
-                                          fontFamily: "Georgia, Regular"
-                                        }}>{details.dieselconsumption.$numberDecimal} Ltrs</td>
-                                      </tr>
-
-                                    </>
-                                  )
-                                })}
-
-                                <tr>
-                                  {/* <td></td> */}
-                                  <td colSpan="2" style={{
-                                    fontSize: "12px",
-                                    fontFamily: "Georgia, Regular"
-                                  }}>Total</td>
-                                  <td style={{
-                                    fontSize: "12px",
-                                    fontFamily: "Georgia, Regular"
-                                  }}>{data.total[0].totalGeneration}</td>
-                                  <td style={{
-                                    fontSize: "12px",
-                                    fontFamily: "Georgia, Regular"
-                                  }}>{data.total[0].totalTimeRun} Hr</td>
-                                  <td style={{
-                                    fontSize: "12px",
-                                    fontFamily: "Georgia, Regular"
-                                  }}>{data.total[0].dieselConsumption} Ltrs</td>
-                                </tr>
-
-                              </table>
+                              <tr>
 
 
+                                <table>
 
-                            </tr>
-                          </table>
-                        </td>
-                        <td style={{
-                          fontSize: "12px",
-                          fontFamily: "Georgia, Regular"
-                        }}>{data.kitchenpng} Kg</td>
-                        <td style={{
-                          fontSize: "12px",
-                          fontFamily: "Georgia, Regular"
-                        }}>{data.waterconsumption} Ltrs</td>
-                        <td>
-                          <table>
-                            <tr>
-                              <td style={{
+                                  {data.generator.map((details) => {
+                                    return (
+                                      <>
+                                        <tr>
+                                          <td style={{
+                                            fontSize: "12px",
+                                            fontFamily: "Georgia, Regular"
+                                          }}>{details.generatorname}</td>
+                                          <td style={{
+                                            fontSize: "12px",
+                                            fontFamily: "Georgia, Regular"
+                                          }}>{details.capacity}</td>
+                                          <td style={{
+                                            fontSize: "12px",
+                                            fontFamily: "Georgia, Regular"
+                                          }}>{details.generation}</td>
+                                          <td style={{
+                                            fontSize: "12px",
+                                            fontFamily: "Georgia, Regular"
+                                          }}>{details.timerun} Hr</td>
+                                          <td style={{
+                                            fontSize: "12px",
+                                            fontFamily: "Georgia, Regular"
+                                          }}>{details.dieselconsumption.$numberDecimal} Ltrs</td>
+                                        </tr>
+
+                                      </>
+                                    )
+                                  })}
+
+                                  <tr>
+                                    {/* <td></td> */}
+                                    <td colSpan="2" style={{
+                                      fontSize: "12px",
+                                      fontFamily: "Georgia, Regular"
+                                    }}>Total</td>
+                                    <td style={{
+                                      fontSize: "12px",
+                                      fontFamily: "Georgia, Regular"
+                                    }}>{data.total[0].totalGeneration}</td>
+                                    <td style={{
+                                      fontSize: "12px",
+                                      fontFamily: "Georgia, Regular"
+                                    }}>{data.total[0].totalTimeRun} Hr</td>
+                                    <td style={{
+                                      fontSize: "12px",
+                                      fontFamily: "Georgia, Regular"
+                                    }}>{data.total[0].dieselConsumption} Ltrs</td>
+                                  </tr>
+
+                                </table>
+
+
+
+                              </tr>
+                            </table>
+                          </td>
+                          <td style={{
+                            fontSize: "12px",
+                            fontFamily: "Georgia, Regular"
+                          }}>{data.kitchenpng} Kg</td>
+                          <td style={{
+                            fontSize: "12px",
+                            fontFamily: "Georgia, Regular"
+                          }}>{data.waterconsumption} Ltrs</td>
+                          <td>
+                            <table>
+                              <tr>
+                                <td style={{
+                                  fontSize: "12px",
+                                  fontFamily: "Georgia, Regular"
+                                }}>MIN </td>
+                                <td style={{
+                                  fontSize: "12px",
+                                  fontFamily: "Georgia, Regular"
+                                }}>{data.weathermin}</td>
+                              </tr>
+                              <tr>
+                                <td style={{
+                                  fontSize: "12px",
+                                  fontFamily: "Georgia, Regular"
+                                }}>MAX </td>
+
+                                <td style={{
+                                  fontSize: "12px",
+                                  fontFamily: "Georgia, Regular"
+                                }}> {data.weathermax}</td>
+                              </tr>
+                              <tr>
+                                <td style={{
+                                  fontSize: "12px",
+                                  fontFamily: "Georgia, Regular"
+                                }}>Humidity </td>
+                                <td style={{
+                                  fontSize: "12px",
+                                  fontFamily: "Georgia, Regular"
+                                }} >{data.humidity}</td>
+                              </tr>
+
+                            </table>
+
+                          </td>
+
+                          <td>
+                            <table >
+                              <tr>
+                                <td style={{
+                                  fontSize: "12px",
+                                  fontFamily: "Georgia, Regular"
+                                }}>KEB </td>
+                                <td style={{
+                                  fontSize: "12px",
+                                  fontFamily: "Georgia, Regular"
+                                }}>{data.kebrate.$numberDecimal}</td>
+                              </tr>
+                              <tr><td style={{
                                 fontSize: "12px",
                                 fontFamily: "Georgia, Regular"
-                              }}>MIN </td>
-                              <td style={{
+                              }}>Fuel </td>
+                                <td style={{
+                                  fontSize: "12px",
+                                  fontFamily: "Georgia, Regular"
+                                }}>{data.fuelrate.$numberDecimal}</td>
+                              </tr>
+                              <tr><td style={{
                                 fontSize: "12px",
                                 fontFamily: "Georgia, Regular"
-                              }}>{data.weathermin}</td>
-                            </tr>
-                            <tr>
-                              <td style={{
+                              }}>Water </td>
+                                <td style={{
+                                  fontSize: "12px",
+                                  fontFamily: "Georgia, Regular"
+                                }}>{data.waterrate.$numberDecimal}</td>
+                              </tr>
+                              <tr><td style={{
                                 fontSize: "12px",
                                 fontFamily: "Georgia, Regular"
-                              }}>MAX </td>
+                              }}>PNG </td>
+                                <td style={{
+                                  fontSize: "12px",
+                                  fontFamily: "Georgia, Regular"
+                                }}>{data.pngrate.$numberDecimal}</td>
+                              </tr>
+                            </table>
 
-                              <td style={{
-                                fontSize: "12px",
-                                fontFamily: "Georgia, Regular"
-                              }}> {data.weathermax}</td>
-                            </tr>
-                            <tr>
-                              <td style={{
-                                fontSize: "12px",
-                                fontFamily: "Georgia, Regular"
-                              }}>Humidity </td>
-                              <td style={{
-                                fontSize: "12px",
-                                fontFamily: "Georgia, Regular"
-                              }} >{data.humidity}</td>
-                            </tr>
+                          </td>
+                          <td style={{
+                            fontSize: "12px",
+                            fontFamily: "Georgia, Regular"
+                          }}>{data.solargeneration}</td>
+                          {data.remark === '' ? 
+                          <td style={{
+                            fontSize: "12px",
+                            fontFamily: "Georgia, Regular"
+                          }}>
+                              <p>No Remarks</p>
+                          </td>
+                           :
+                          <td style={{
+                            fontSize: "12px",
+                            fontFamily: "Georgia, Regular"
+                          }}>
+                              <button className='btnpending' onClick={()=> showModal(data.remark)}>View</button>
 
-                          </table>
+                          </td>
+                        }  
+                        </tr>
+                      </>
+                    )
+                  })}
 
-                        </td>
-
-                        <td>
-                          <table >
-                            <tr>
-                              <td style={{
-                                fontSize: "12px",
-                                fontFamily: "Georgia, Regular"
-                              }}>KEB </td>
-                              <td style={{
-                                fontSize: "12px",
-                                fontFamily: "Georgia, Regular"
-                              }}>{data.kebrate.$numberDecimal}</td>
-                            </tr>
-                            <tr><td style={{
-                              fontSize: "12px",
-                              fontFamily: "Georgia, Regular"
-                            }}>Fuel </td>
-                              <td style={{
-                                fontSize: "12px",
-                                fontFamily: "Georgia, Regular"
-                              }}>{data.fuelrate.$numberDecimal}</td>
-                            </tr>
-                            <tr><td style={{
-                              fontSize: "12px",
-                              fontFamily: "Georgia, Regular"
-                            }}>Water </td>
-                              <td style={{
-                                fontSize: "12px",
-                                fontFamily: "Georgia, Regular"
-                              }}>{data.waterrate.$numberDecimal}</td>
-                            </tr>
-                            <tr><td style={{
-                              fontSize: "12px",
-                              fontFamily: "Georgia, Regular"
-                            }}>PNG </td>
-                              <td style={{
-                                fontSize: "12px",
-                                fontFamily: "Georgia, Regular"
-                              }}>{data.pngrate.$numberDecimal}</td>
-                            </tr>
-                          </table>
-
-                        </td>
-                        <td style={{
-                          fontSize: "12px",
-                          fontFamily: "Georgia, Regular"
-                        }}>{data.solargeneration}</td>
-                      </tr>
-                    </>
-                  )
-                })}
-
-              </tbody>
+                </tbody>
 
 
-            </table>
+              </table>
               <Stack>
                 <Pagination
                   count={count}
@@ -332,7 +373,7 @@ function ViewDataTable() {
                   onChange={handleChange}
                 />
               </Stack>
-            </> :show? <p>Data Not Found </p>:""
+            </> : show ? <p>Data Not Found </p> : ""
 
           }
 
@@ -340,6 +381,11 @@ function ViewDataTable() {
 
 
         </div>
+        <Modal modal={modal} hide={hideModal}>
+
+          <p className='text'>Remarks</p>
+          <p className='text' >{showRemark}</p>
+        </Modal>
 
       </div>
 
