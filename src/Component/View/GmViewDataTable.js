@@ -12,8 +12,12 @@ const Modal = ({ modal, hide, approvemessage, refreshPage, children, approve, sh
 
   return (
     <div className={showHideClassName}>
+              
       <section className='modal-main-gm-data'>
+      <i className="fa fa-times iconcross "      onClick={hide} ></i>
+      {/* <h4 className='iconcross' onClick={hide}>X</h4> */}
         <p>{children}</p>
+
         {approvemessage == null ?
           <button className='btnapprove' style={{ cursor: 'pointer' }}
             onClick={() => approve(showId)}>
@@ -27,11 +31,7 @@ const Modal = ({ modal, hide, approvemessage, refreshPage, children, approve, sh
           </button>
 
         }
-        {/* <button className='canclebtn' style={{ cursor: 'pointer' }}
-        onClick={hide}
-        >
-          Cancel
-        </button> */}
+      
 
       </section>
     </div>
@@ -162,7 +162,7 @@ function GmViewDataTable() {
           <h3 style={{ textAlign: "center", color: "#F1844D", fontSize: "20px" }}>
             {location}
           </h3>
-          <div className='maindiv' style={{ display: "flex" }}>
+          <div className='maindiv' >
 
             <div className='lbl'>
               <label style={{ color: "#F1844D", fontSize: "14px" }}>From Date</label><br />
@@ -406,15 +406,16 @@ function GmViewDataTable() {
             </> : show ? <p>Data Not Found </p> : ""
 
           }
-        </div>
+          <Modal modal={modal} hide={hideModal} approvemessage={approvemessage} refreshPage={refreshPage} showId={showId} approve={approve}>
 
-        <Modal modal={modal} hide={hideModal} approvemessage={approvemessage} refreshPage={refreshPage} showId={showId} approve={approve}>
-
-          <p className='text'>GM Action</p>
+          <p className='text'>Recommended Action</p>
           
           <textarea onChange={handleRemarks} rows="5" placeholder='Write Your Remarks' className='form-control' />
           <p className='text' style={{ color: "red" }}>{approvemessage}</p>
         </Modal>
+        </div>
+
+        
       </div>
 
     </>

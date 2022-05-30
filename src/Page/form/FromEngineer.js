@@ -489,7 +489,7 @@ const Form = () => {
 
       .catch(err => {
         console.log(err)
-        setModalMessage("Something went wrong!!");
+        setModalMessage("All fields are Required!!");
         // alert("Something went wrong!!");
       });
 

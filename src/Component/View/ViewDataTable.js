@@ -12,9 +12,10 @@ const Modal = ({ modal, hide, children }) => {
 
   return (
     <div className={showHideClassName}>
-      <section className='modal-main-gm-data'>
+      <section className='modal-main-gm-data' style={{height: "auto"}}>
+      <i className="fa fa-times iconcross "      onClick={hide} ></i>
         <p>{children}</p>
-      <button onClick={hide} className='canclebtn' style={{ cursor: 'pointer' }}>Ok</button>
+     
       </section>
     </div>
   );
@@ -108,7 +109,7 @@ function ViewDataTable() {
           <div className='maindiv' style={{ display: "flex" }}>
 
 
-            <div>
+            <div className='lbl'>
               <label style={{ color: "#F1844D", fontSize: "14px" }}>Choose Property</label>
               <br />
               <select name="Property" className='form-control' onChange={locationHandleChange}>
@@ -383,8 +384,8 @@ function ViewDataTable() {
         </div>
         <Modal modal={modal} hide={hideModal}>
 
-          <p className='text'>Remarks</p>
-          <p className='text' >{showRemark}</p>
+          
+          <p className='textviewdatatable ' >{showRemark}</p>
         </Modal>
 
       </div>

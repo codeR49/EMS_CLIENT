@@ -42,6 +42,8 @@ margin-left: 30px !important;
 }
 .maindiv{
     margin-top:60px !important;
+    display: flex;
+
     
 }
 .form-control {
@@ -162,6 +164,17 @@ opacity: 1;
 textarea:focus, input:focus{
     outline: 0;
 }
+
+.iconcross{
+    margin-left:530px;
+     margin-top:5px;
+      color:#F1844D; 
+      font-size:bold ;
+      cursor: pointer;
+}
+
+
+
 .text{
    
     
@@ -171,6 +184,16 @@ textarea:focus, input:focus{
     letter-spacing: 0px;
     color: #9A7036;
     opacity: 1;
+}
+.textviewdatatable{
+    text-align: justify;
+    font: normal normal bold 20px Georgia;
+    margin-left: 10px;
+    letter-spacing: 0px;
+    color: #9A7036;
+    opacity: 1;
+    margin-top: -5px;
+  
 }
 
 
@@ -184,6 +207,8 @@ textarea:focus, input:focus{
       transform: translate(-50%,-50%);
       border-radius: 12px;
     }
+    
+    
 @media screen and (max-width: 767px) {
     .table-responsive {
         width: 100%;
@@ -203,4 +228,164 @@ textarea:focus, input:focus{
     .table-responsive > .table > tfoot > tr > td {
         white-space: nowrap;
     }
+    .maindiv{
+        display: contents;
+        flex-direction: column;
+    }
+    .lbl{
+        margin-bottom: 5px;
+    }
+    .form-control{
+        width: 200px;
+    }
 }
+
+@media screen  and (max-width: 767px) {
+    .modal-main-gm-data  {
+        position:fixed;
+        background: white;
+        width: 70%;
+        height: 45%;
+        top:40%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 12px;
+
+
+      }
+      .btnapprove{
+        background-color:#F1844D; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 0px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 180px;
+        height: 40px;
+        border-radius: 6px;
+        margin-left: 80px !important;margin-top: 10px;
+      }
+      textarea{
+        margin: 0px 5px 5px 50px;
+      width: 70% !important;
+      height: 100px !important;
+      /* UI Properties */
+      border: 2px solid #F1844D;
+      opacity: 1;
+      }
+      textarea:focus, input:focus{
+          outline: 0;
+      }
+      .iconcross{
+        margin-left:290px;
+         margin-top:5px;
+          color:#F1844D; 
+          font-size:bold ;
+          cursor: pointer;
+    }
+      
+}
+
+
+@media screen and (min-width:768px)  and (max-width: 1280px) {
+    .modal-main-gm-data  {
+        position:fixed;
+        background: white;
+        width: 70%;
+        height: 35%;
+        top:30%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 12px;
+
+
+      }
+      .btnapprove{
+        background-color:#F1844D; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 0px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 180px;
+        height: 40px;
+        border-radius: 6px;
+        margin-left: 180px !important;margin-top: 10px;
+      }
+      textarea{
+        margin: 0px 5px 5px 50px;
+      width: 70% !important;
+      height: 100px !important;
+      /* UI Properties */
+      border: 2px solid #F1844D;
+      opacity: 1;
+      }
+      textarea:focus, input:focus{
+          outline: 0;
+      }
+      .iconcross{
+        margin-left:500px;
+         margin-top:5px;
+          color:#F1844D; 
+          font-size:bold ;
+          cursor: pointer;
+    }
+      
+}
+
+@media screen and (min-width:768px)  and (max-width: 1024px) {
+    .modal-main-gm-data  {
+        position:fixed;
+        background: white;
+        width: 70%;
+        height: 55%;
+        top:30%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 12px;
+
+
+      }
+      .btnapprove{
+        background-color:#F1844D; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 0px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 180px;
+        height: 40px;
+        border-radius: 6px;
+        margin-left: 220px !important;margin-top: 10px;
+      }
+      textarea{
+        margin: 0px 5px 5px 80px;
+      width: 70% !important;
+      height: 100px !important;
+      /* UI Properties */
+      border: 2px solid #F1844D;
+      opacity: 1;
+      }
+      textarea:focus, input:focus{
+          outline: 0;
+      }
+      .iconcross{
+        margin-left:500px;
+         margin-top:5px;
+          color:#F1844D; 
+          font-size:bold ;
+          cursor: pointer;
+    }
+      
+}
+
+
+
+
+
