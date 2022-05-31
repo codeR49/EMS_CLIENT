@@ -38,340 +38,329 @@ const Form = () => {
 
   const token = localStorage.getItem("token");
   const place = localStorage.getItem("location");
-  const [capacity, setCapacity] = useState()
-  const [generation, setGeneration] = useState()
-  const [timerun, setRunTime] = useState()
-  const [dieselconsumption, setDieselConsumption] = useState()
+  const [capacity, setCapacity] = useState('');
+  const [generation, setGeneration] = useState('')
+  const [timerun, setRunTime] = useState('')
+  const [dieselconsumption, setDieselConsumption] = useState('')
 
-  const [capacity2, setCapacity2] = useState()
-  const [generation2, setGeneration2] = useState()
-  const [timerun2, setRunTime2] = useState()
-  const [dieselconsumption2, setDieselConsumption2] = useState()
+  const [capacity2, setCapacity2] = useState('')
+  const [generation2, setGeneration2] = useState('')
+  const [timerun2, setRunTime2] = useState('')
+  const [dieselconsumption2, setDieselConsumption2] = useState('')
 
-  const [capacity3, setCapacity3] = useState()
-  const [generation3, setGeneration3] = useState()
-  const [timerun3, setRunTime3] = useState()
-  const [dieselconsumption3, setDieselConsumption3] = useState()
+  const [capacity3, setCapacity3] = useState('')
+  const [generation3, setGeneration3] = useState('')
+  const [timerun3, setRunTime3] = useState('')
+  const [dieselconsumption3, setDieselConsumption3] = useState('')
 
-  const [kebrate, setKebRate] = useState()
-  const [fuelrate, setFuelRate] = useState()
-  const [waterrate, setWaterRate] = useState()
-  const [pngrate, setPngRate] = useState()
+  const [kebrate, setKebRate] = useState('')
+  const [fuelrate, setFuelRate] = useState('')
+  const [waterrate, setWaterRate] = useState('')
+  const [pngrate, setPngRate] = useState('')
 
-  const [weathermin, setMinTempurature] = useState()
-  const [weathermax, setMaxTemperature] = useState()
-  const [humidity, setHumidity] = useState()
+  const [weathermin, setMinTempurature] = useState('')
+  const [weathermax, setMaxTemperature] = useState('')
+  const [humidity, setHumidity] = useState('')
 
-  const [kitchenpng, setKitchenpng] = useState()
-  const [waterconsumption, setWaterConsumption] = useState()
-  const [solargeneration, setSolarGeneration] = useState()
-  const [kebconsumption, setKebConsumption] = useState()
+  const [kitchenpng, setKitchenpng] = useState('')
+  const [waterconsumption, setWaterConsumption] = useState('')
+  const [solargeneration, setSolarGeneration] = useState('')
+  const [kebconsumption, setKebConsumption] = useState('')
 
   const [err, setErr] = useState({});
-  
+
   const [show, setShow] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
-  // const [isDisabled, setisDisabled] = useState(true);
 
   const validate = (name, value) => {
     const re = /^[0-9\b]+$/;
+    const time = /^([01]\d|2[0-3]):?([0-5]\d)$/;
 
     switch (name) {
       case "capacity1":
         if (!value || value.trim() === "") {
           setErr({ capacity1: "Capacity is required" });
-          
+
         }
         else if (!re.test(value)) {
           setErr({ capacity1: "Only numeric value allowed" });
-          
+
         }
         else {
           setErr("");
-          setCapacity(value)
-          
+
         }
         break;
       case "generation1":
         if (!value || value.trim() === "") {
           setErr({ generation1: "Generation is required" });
-          
+
         }
         else if (!re.test(value)) {
           setErr({ generation1: "Only numeric value allowed" });
-          
+
         }
         else {
           setErr("");
-          setGeneration(value)
-          
+
         }
         break;
       case "timerun1":
         if (!value || value.trim() === "") {
           setErr({ timerun1: "Time Run is required" });
-          
-        } else {
+
+        } else if (!time.test(value)) {
+          setErr({ timerun1: "Enter in this HH:MM format" });
+        }
+        else {
           setErr("");
-          setRunTime(value);
-          
+
         }
         break;
       case "diesel1":
         if (!value || value.trim() === "") {
           setErr({ diesel1: "Diesel Consumption is required" });
-        
+
         } else if (!re.test(value)) {
           setErr({ diesel1: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setDieselConsumption(value);
-          
+
         }
         break;
       case "capacity2":
         if (!value || value.trim() === "") {
           setErr({ capacity2: "Capacity is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ capacity2: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setCapacity2(value);
-          
+
         }
         break;
       case "generation2":
         if (!value || value.trim() === "") {
           setErr({ generation2: "Generation is required" });
-      
+
         } else if (!re.test(value)) {
           setErr({ generation2: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setGeneration2(value);
-          
+
         }
         break;
       case "timerun2":
         if (!value || value.trim() === "") {
           setErr({ timerun2: "Time Run is required" });
-          
+
+        } else if (!time.test(value)) {
+
+          setErr({ timerun1: "Enter in this HH:MM format" });
         } else {
           setErr("");
-          setRunTime2(value);
-          
+
         }
         break;
       case "diesel2":
         if (!value || value.trim() === "") {
           setErr({ diesel2: "Diesel Consumption is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ diesel2: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setDieselConsumption2(value);
-          
+
         }
         break;
       case "capacity3":
         if (!value || value.trim() === "") {
           setErr({ capacity3: "Capacity is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ capacity3: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setCapacity3(value);
-          
+
         }
         break;
       case "generation3":
         if (!value || value.trim() === "") {
           setErr({ generation3: "Generation is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ generation3: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setGeneration3(value);
-          
+
         }
         break;
       case "timerun3":
         if (!value || value.trim() === "") {
           setErr({ timerun3: "Time Run is required" });
-          
-        } else {
+
+        } else if (!time.test(value)) {
+          setErr({ timerun1: "Enter in this HH:MM format" });
+        }
+        else {
           setErr("");
-          setRunTime3(value);
-          
+
         }
         break;
       case "diesel3":
         if (!value || value.trim() === "") {
           setErr({ diesel3: "Diesel Consumption is required" });
-        
+
         } else if (!re.test(value)) {
           setErr({ diesel3: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setDieselConsumption3(value);
-          
+
         }
         break;
       case "keb":
         if (!value || value.trim() === "") {
           setErr({ keb: "KEB is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ keb: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setKebRate(value);
-          
+
         }
         break;
       case "fuel":
         if (!value || value.trim() === "") {
           setErr({ fuel: "Fuel is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ fuel: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setFuelRate(value);
-          
+
         }
         break;
       case "water":
         if (!value || value.trim() === "") {
           setErr({ water: "Water is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ water: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setWaterRate(value);
-          
+
         }
         break;
       case "png":
         if (!value || value.trim() === "") {
           setErr({ png: "PNG is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ png: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setPngRate(value);
-          
+
         }
         break;
       case "min":
         if (!value || value.trim() === "") {
           setErr({ min: "Min Temperature is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ min: "Only numeric value allowed" });
-          
+
+        } else if (value >= weathermax) {
+          setErr({ min: "Min Temp must be less than Max Temp" });
+
         } else {
           setErr("");
-          setMinTempurature(value);
-          
+
         }
         break;
       case "max":
         if (!value || value.trim() === "") {
           setErr({ max: "Max Temperature is required" });
-         
+
         } else if (!re.test(value)) {
           setErr({ max: "Only numeric value allowed" });
-          
-        } else if (weathermin >= value) {
+
+        } else if (value <= weathermin) {
           setErr({ max: "Max Temp must be greater than Min Temp" });
-          
+
         } else {
           setErr("");
-          setMaxTemperature(value);
-          
+
         }
         break;
       case "humidity":
         if (!value || value.trim() === "") {
           setErr({ humidity: "Humidity is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ humidity: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setHumidity(value);
-          
+
         }
         break;
       case "pc":
         if (!value || value.trim() === "") {
           setErr({ pc: "PNG Consumption is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ pc: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setKitchenpng(value);
-          
+
         }
         break;
       case "wc":
         if (!value || value.trim() === "") {
           setErr({ wc: "Water Consumption is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ wc: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setWaterConsumption(value);
-          
+
         }
         break;
       case "sg":
         if (!value || value.trim() === "") {
           setErr({ sg: "Solar Generation is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ sg: "Only numeric value allowed" });
-        
+
         } else {
           setErr("");
-          setSolarGeneration(value);
-          
+
         }
         break;
       case "kc":
         if (!value || value.trim() === "") {
           setErr({ kc: "KEB Consumption is required" });
-          
+
         } else if (!re.test(value)) {
           setErr({ kc: "Only numeric value allowed" });
-          
+
         } else {
           setErr("");
-          setKebConsumption(value);
-        
+
         }
         break;
       default: {
@@ -380,8 +369,231 @@ const Form = () => {
     }
   };
 
+  const capacityHandle = (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setCapacity(value);
+    }
+
+  }
+
+  const generationHandle = (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setGeneration(value)
+    }
+  }
+  const runTimeHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setRunTime(value);
+    }
+  }
+  const dieselConsumptionHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setDieselConsumption(value);
+    }
+  }
+  const capacityHandle2 = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setCapacity2(value);
+    }
+  }
+  const generationHandle2 = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setGeneration2(value);
+    }
+  }
+  const runTimeHandle2 = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setRunTime2(value);
+    }
+  }
+  const dieselConsumptionHandle2 = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setDieselConsumption2(value);
+    }
+  }
+  const capacityHandle3 = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setCapacity3(value);
+    }
+  }
+  const generationHandle3 = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setGeneration3(value);
+    }
+  }
+  const runTimeHandle3 = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setRunTime3(value);
+    }
+  }
+  const dieselConsumptionHandle3 = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setDieselConsumption3(value);
+    }
+  }
+  const kebRateHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setKebRate(value);
+    }
+  }
+  const fuelRateHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setFuelRate(value);
+    }
+  }
+  const pngRateHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setPngRate(value);
+    }
+  }
+  const waterrateHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setWaterRate(value);
+    }
+  }
+  const minimumTempuratureHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setMinTempurature(value);
+    }
+  }
+  const maximumTempuratureHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setMaxTemperature(value);
+    }
+  }
+  const humudityHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setHumidity(value);
+    }
+  }
+  const pngKitchenHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setKitchenpng(value);
+    }
+  }
+  const waterConsumptionHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setWaterConsumption(value);
+    }
+  }
+
+  const solarGenerationHandle = async (e) => {
+    const res = await e.target.value;
+    setSolarGeneration(res)
+  }
+
+
+  const kebConsumptionHandle = async (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    const validateResult = validate(name, value);
+    if (!validateResult) {
+      setKebConsumption(value);
+    }
+
+  }
   const showModal = () => {
-    setShow(true);
+    if (place === 'Kabini' && capacity.length < 1 &&
+      generation.length < 1 && timerun.length < 1 && dieselconsumption.length < 1
+      && capacity2.length < 1 && generation2.length < 1 && timerun2.length < 1 && dieselconsumption2.length < 1
+      && capacity3.length < 1 && generation3.length < 1 && timerun3.length < 1 && dieselconsumption3.length < 1
+      && kebrate.length < 1 && fuelrate.length < 1 && waterrate.length < 1 && pngrate.length < 1
+      && weathermin.length < 1 && weathermax.length < 1 && humidity.length < 1 && kitchenpng.length < 1
+      && waterconsumption.length < 1 && solargeneration.length < 1 && kebconsumption.length < 1) {
+      setShow(false);
+    }
+    else if (place === 'Kabini' && capacity.length > 1 &&
+      generation.length > 1 && timerun.length > 1 && dieselconsumption.length > 1
+      && capacity2.length > 1 && generation2.length > 1 && timerun2.length > 1 && dieselconsumption2.length > 1
+      && capacity3.length > 1 && generation3.length > 1 && timerun3.length > 1 && dieselconsumption3.length > 1
+      && kebrate.length > 1 && fuelrate.length > 1 && waterrate.length > 1 && pngrate.length > 1
+      && weathermin.length > 1 && weathermax.length > 1 && humidity.length > 1 && kitchenpng.length > 1
+      && waterconsumption.length > 1 && solargeneration.length > 1 && kebconsumption.length > 1) {
+      setShow(true);
+    }
+    else if ((place === 'Hampi' || place === 'Coorg') && capacity.length < 1 &&
+      generation.length < 1 && timerun.length < 1 && dieselconsumption.length < 1
+      && capacity2.length < 1 && generation2.length < 1 && timerun2.length < 1 && dieselconsumption2.length < 1
+      && kebrate.length < 1 && fuelrate.length < 1 && waterrate.length < 1 && pngrate.length < 1
+      && weathermin.length < 1 && weathermax.length < 1 && humidity.length < 1 && kitchenpng.length < 1
+      && waterconsumption.length < 1 && solargeneration.length < 1 && kebconsumption.length < 1) {
+      setShow(false);
+    }
+    else if ((place === 'Hampi' || place === 'Coorg') && capacity.length > 1 &&
+      generation.length > 1 && timerun.length > 1 && dieselconsumption.length > 1
+      && capacity2.length > 1 && generation2.length > 1 && timerun2.length > 1 && dieselconsumption2.length > 1
+      && kebrate.length > 1 && fuelrate.length > 1 && waterrate.length > 1 && pngrate.length > 1
+      && weathermin.length > 1 && weathermax.length > 1 && humidity.length > 1 && kitchenpng.length > 1
+      && waterconsumption.length > 1 && solargeneration.length > 1 && kebconsumption.length > 1) {
+      setShow(true);
+    }
+    else {
+      setShow(false);
+    }
+
   }
 
   const hideModal = () => {
@@ -390,89 +602,77 @@ const Form = () => {
 
   const refreshPage = () => {
 
-    window.location.reload();
+    setCapacity('');
+    setGeneration('');
+    setRunTime('');
+    setDieselConsumption('');
+    setCapacity2('');
+    setGeneration2('');
+    setRunTime2('');
+    setDieselConsumption2('');
+    setCapacity3('');
+    setGeneration3('');
+    setRunTime3('');
+    setDieselConsumption3('');
+    setKebRate('');
+    setFuelRate('');
+    setWaterRate('');
+    setPngRate('');
+    setMinTempurature('');
+    setMaxTemperature('');
+    setHumidity('');
+    setKitchenpng('');
+    setWaterConsumption('');
+    setSolarGeneration('');
+    setKebConsumption('');
+    setShow(false);
+
   }
 
   const submitForm = (e) => {
     e.preventDefault();
-   
-    if (place === 'Kabini') {
-      data = {
-        location: place,
-        date: dateToday,
-        keb: kebconsumption,
-        generator: [
-          {
-            generatorname: "Generator 1",
-            capacity: capacity,
-            generation: generation,
-            timerun: timerun,
-            dieselconsumption: dieselconsumption
-          },
-          {
-            generatorname: "Generator 2",
-            capacity: capacity2,
-            generation: generation2,
-            timerun: timerun2,
-            dieselconsumption: dieselconsumption2
-          },
-          {
-            generatorname: "Generator 3",
-            capacity: capacity3,
-            generation: generation3,
-            timerun: timerun3,
-            dieselconsumption: dieselconsumption3
-          }
 
-        ],
-        kitchenpng: kitchenpng,
-        waterconsumption: waterconsumption,
-        weathermin: weathermin,
-        weathermax: weathermax,
-        humidity: humidity,
-        kebrate: kebrate,
-        fuelrate: fuelrate,
-        waterrate: waterrate,
-        pngrate: pngrate,
-        solargeneration: solargeneration,
-        kebconsumption: kebconsumption
+    data = {
+      location: place,
+      date: dateToday,
+      keb: kebconsumption,
+      generator: [
+        {
+          generatorname: "Generator 1",
+          capacity: capacity,
+          generation: generation,
+          timerun: timerun,
+          dieselconsumption: dieselconsumption
+        },
+        {
+          generatorname: "Generator 2",
+          capacity: capacity2,
+          generation: generation2,
+          timerun: timerun2,
+          dieselconsumption: dieselconsumption2
+        }
+      ],
+      kitchenpng: kitchenpng,
+      waterconsumption: waterconsumption,
+      weathermin: weathermin,
+      weathermax: weathermax,
+      humidity: humidity,
+      kebrate: kebrate,
+      fuelrate: fuelrate,
+      waterrate: waterrate,
+      pngrate: pngrate,
+      solargeneration: solargeneration,
+      kebconsumption: kebconsumption
 
-      }
     }
-    else {
-      data = {
-        location: place,
-        date: dateToday,
-        keb: kebconsumption,
-        generator: [
-          {
-            generatorname: "Generator 1",
-            capacity: capacity,
-            generation: generation,
-            timerun: timerun,
-            dieselconsumption: dieselconsumption
-          },
-          {
-            generatorname: "Generator 2",
-            capacity: capacity2,
-            generation: generation2,
-            timerun: timerun2,
-            dieselconsumption: dieselconsumption2
-          }
-
-        ],
-        kitchenpng: kitchenpng,
-        waterconsumption: waterconsumption,
-        weathermin: weathermin,
-        weathermax: weathermax,
-        humidity: humidity,
-        kebrate: kebrate,
-        fuelrate: fuelrate,
-        waterrate: waterrate,
-        pngrate: pngrate,
-        solargeneration: solargeneration
-
-      }
+    if (place === 'Kabini') {
+      data.generator.push({
+        generatorname: "Generator 3",
+        capacity: capacity3,
+        generation: generation3,
+        timerun: timerun3,
+        dieselconsumption: dieselconsumption3
+      })
     }
     axios.post(`${DevelopmentUrl}/consume`, data, {
       headers: {
@@ -488,8 +688,8 @@ const Form = () => {
       )
 
       .catch(err => {
-        console.log(err)
-        setModalMessage("All fields are Required!!");
+        console.log(err);
+        setModalMessage("Something went wrong");
         // alert("Something went wrong!!");
       });
 
@@ -521,25 +721,25 @@ const Form = () => {
               <div className='generator '>
                 <div className='inputlablegenerator'>
                   <label className='capacity'>Capacity:</label><br />
-                  <input type="text" id="capacity1" name="capacity1" placeholder="KVA" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="capacity1" name="capacity1" placeholder="KVA" value={capacity} className='capacityinput1' onChange={capacityHandle} required={true} />
                   {err.capacity1 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.capacity1}</p> : ''}
                 </div>
                 <div className='inputlablegenerator'>
 
                   <label className='capacity'>Generation:</label><br />
-                  <input type="text" id="generation1" name="generation1" placeholder="KVA" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="generation1" name="generation1" placeholder="KVA" value={generation} className='capacityinput1' onChange={generationHandle} required={true} />
                   {err.generation1 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.generation1}</p> : ''}
                 </div>
                 <div className='inputlablegenerator'>
 
                   <label className='capacity'>Time Run:</label><br />
-                  <input type="text" id="timerun1" name="timerun1" placeholder="HM:MM" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="timerun1" name="timerun1" placeholder="HM:MM" value={timerun} className='capacityinput1' onChange={runTimeHandle} required={true} />
                   {err.timerun1 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.timerun1}</p> : ''}
                 </div>
                 <div className='inputlablegenerator'>
 
                   <label className='capacity'>Diesel Consumption:</label><br />
-                  <input type="text" id="diesel1" name="diesel1" placeholder="In Liters" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="diesel1" name="diesel1" placeholder="In Liters" value={dieselconsumption} className='capacityinput1' onChange={dieselConsumptionHandle} required={true} />
                   {err.diesel1 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.diesel1}</p> : ''}
                 </div>
 
@@ -553,25 +753,25 @@ const Form = () => {
 
 
                   <label className='capacity'>Capacity:</label><br />
-                  <input type="text" id="capacity2" name="capacity2" placeholder="KVA" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="capacity2" name="capacity2" placeholder="KVA" value={capacity2} className='capacityinput1' onChange={capacityHandle2} required={true} />
                   {err.capacity2 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.capacity2}</p> : ''}
                 </div>
                 <div className='inputlablegenerator'>
 
                   <label className='capacity'>Generation:</label><br />
-                  <input type="text" id="generation2" name="generation2" placeholder="unit" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="generation2" name="generation2" placeholder="unit" value={generation2} className='capacityinput1' onChange={generationHandle2} required={true} />
                   {err.generation2 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.generation2}</p> : ''}
                 </div>
                 <div className='inputlablegenerator'>
 
                   <label className='capacity'>Time Run:</label><br />
-                  <input type="text" id="timerun2" name="timerun2" placeholder="HH:MM" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="timerun2" name="timerun2" placeholder="HH:MM" value={timerun2} className='capacityinput1' onChange={runTimeHandle2} required={true} />
                   {err.timerun2 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.timerun2}</p> : ''}
                 </div>
                 <div className='inputlablegenerator'>
 
                   <label className='capacity'>Diesel Consumption:</label><br />
-                  <input type="text" id="diesel2" name="diesel2" placeholder="In Liters" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="diesel2" name="diesel2" placeholder="In Liters" value={dieselconsumption2} className='capacityinput1' onChange={dieselConsumptionHandle2} required={true} />
                   {err.diesel2 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.diesel2}</p> : ''}
                 </div>
               </div>
@@ -586,26 +786,26 @@ const Form = () => {
 
 
                         <label className='capacity'>Capacity:</label><br />
-                        <input type="text" id="capacity3" name="capacity3" placeholder="KVA" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                        <input type="text" id="capacity3" name="capacity3" placeholder="KVA" value={capacity3} className='capacityinput1' onChange={capacityHandle3} required={true} />
                         {err.capacity3 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.capacity3}</p> : ''}
 
                       </div>
                       <div className='inputlablegenerator'>
 
                         <label className='capacity'>Generation:</label><br />
-                        <input type="text" id="generation3" name="generation3" placeholder="unit" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                        <input type="text" id="generation3" name="generation3" placeholder="unit" value={generation3} className='capacityinput1' onChange={generationHandle3} required={true} />
                         {err.generation3 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.generation3}</p> : ''}
                       </div>
                       <div className='inputlablegenerator'>
 
                         <label className='capacity'>Time Run:</label><br />
-                        <input type="text" id="timerun3" name="timerun3" placeholder="HH:MM" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                        <input type="text" id="timerun3" name="timerun3" placeholder="HH:MM" value={timerun3} className='capacityinput1' onChange={runTimeHandle3} required={true} />
                         {err.timerun3 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.timerun3}</p> : ''}
                       </div>
                       <div className='inputlablegenerator'>
 
                         <label className='capacity'>Diesel Consumption:</label><br />
-                        <input type="text" id="diesel3" name="diesel3" placeholder="In Liters" className='capacityinput1' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                        <input type="text" id="diesel3" name="diesel3" placeholder="In Liters" value={dieselconsumption3} className='capacityinput1' onChange={dieselConsumptionHandle3} required={true} />
                         {err.diesel3 != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.diesel3}</p> : ''}
                       </div>
                     </div>
@@ -620,22 +820,22 @@ const Form = () => {
               <div className='generator margindiv '>
                 <div className='margindiv'>
                   <label className='capacity'>KEB:</label> <br />
-                  <input type="text" id="keb" name="keb" placeholder="Rate/Unit" className='capacityinput' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="keb" name="keb" placeholder="Rate/Unit" value={kebrate} className='capacityinput' onChange={kebRateHandle} required={true} />
                   {err.keb != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.keb}</p> : ''}
                 </div>
                 <div className='margindiv'>
                   <label className='capacity'>Fuel:</label><br />
-                  <input type="text" id="fuel" name="fuel" placeholder="Rate/Unit" className='capacityinput' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="fuel" name="fuel" placeholder="Rate/Unit" value={fuelrate} className='capacityinput' onChange={fuelRateHandle} required={true} />
                   {err.fuel != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.fuel}</p> : ''}
                 </div>
                 <div className='margindiv'>
                   <label className='capacity'>Water:</label><br />
-                  <input type="text" id="water" name="water" placeholder="Rate/Unit" className='capacityinput' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="water" name="water" placeholder="Rate/Unit" value={waterrate} className='capacityinput' onChange={waterrateHandle} required={true} />
                   {err.water != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.water}</p> : ''}
                 </div>
                 <div className='margindiv'>
                   <label className='capacity'>PNG:</label><br />
-                  <input type="text" id="png" name="png" placeholder="Rate/Unit" className='capacityinput' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="png" name="png" placeholder="Rate/Unit" value={pngrate} className='capacityinput' onChange={pngRateHandle} required={true} />
                   {err.png != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.png}</p> : ''}
                 </div>
               </div>
@@ -644,19 +844,19 @@ const Form = () => {
               </div>
               <div className='generator margindiv'>
                 <div className='margindiv'>
-                  <label className='capacity'>Min:</label> <br />
-                  <input type="text" id="min" name="min" placeholder="Celsius" className='capacityinput' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <label className='capacity'>Min Temp:</label> <br />
+                  <input type="text" id="min" name="min" placeholder="Celsius" value={weathermin} className='capacityinput' onChange={minimumTempuratureHandle} required={true} />
                   {err.min != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.min}</p> : ''}
                 </div>
                 <div className='margindiv'>
-                  <label className='capacity'>Max:</label> <br />
-                  <input type="text" id="max" name="max" placeholder="Celsius" className='capacityinput' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <label className='capacity'>Max Temp:</label> <br />
+                  <input type="text" id="max" name="max" placeholder="Celsius" value={weathermax} className='capacityinput' onChange={maximumTempuratureHandle} required={true} />
                   {err.max != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.max}</p> : ''}
                 </div>
                 <div className='margindiv'>
                   <label className='capacity'>Humidity:</label> <br />
 
-                  <input type="text" id="humidity" name="humidity" placeholder="Percentage" className='capacityinput' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="humidity" name="humidity" placeholder="Percentage" value={humidity} className='capacityinput' onChange={humudityHandle} required={true} />
                   {err.humidity != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.humidity}</p> : ''}
                 </div>
               </div>
@@ -666,28 +866,28 @@ const Form = () => {
                   <h6 className='lastdivheading'>Kitchen PNG</h6>
 
                   <label className='consumption'>PNG Consumption:</label><br />
-                  <input type="text" id="pc" name="pc" placeholder="KG" className='capacityinput' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="pc" name="pc" placeholder="KG" value={kitchenpng} className='capacityinput' onChange={pngKitchenHandle} required={true} />
                   {err.pc != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.pc}</p> : ''}
                 </div>
                 <div>
                   <h6 className='lastdivheading'>Water Consumption</h6>
 
                   <label className='consumption' >water consumption:</label><br />
-                  <input type="text" id="wc" name="wc" placeholder="IN KL" className='capacityinput' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="wc" name="wc" placeholder="IN KL" value={waterconsumption} className='capacityinput' onChange={waterConsumptionHandle} required={true} />
                   {err.wc != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.wc}</p> : ''}
                 </div>
                 <div className='solar' >
                   <h6 className='lastdivheading'>Solar Generation</h6>
 
                   <label className='consumption' >Solar Generation:</label><br />
-                  <input type="text" id="sg" name="sg" placeholder="Units" className='capacityinput' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="sg" name="sg" placeholder="Units" value={solargeneration} className='capacityinput' onChange={solarGenerationHandle} required={true} />
                   {err.sg != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.sg}</p> : ''}
                 </div>
                 <div className='kebc' >
                   <h6 className='lastdivheading' >KEB Consumption</h6>
 
                   <label className='consumption'>KEB Consumption:</label><br />
-                  <input type="text" id="kc" name="kc" placeholder="Units" className='capacityinput' onChange={(e) => { validate(e.target.name, e.target.value) }} />
+                  <input type="text" id="kc" name="kc" placeholder="Units" value={kebconsumption} className='capacityinput' onChange={kebConsumptionHandle} required={true} />
                   {err.kc != null ? <p style={{ color: "red", fontSize: "11px" }}>{err.kc}</p> : ''}
                 </div>
               </div>
