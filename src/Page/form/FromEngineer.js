@@ -159,7 +159,7 @@ const Form = () => {
 
         } else if (!time.test(value)) {
 
-          setErr({ timerun1: "Enter in this HH:MM format" });
+          setErr({ timerun2: "Enter in this HH:MM format" });
         } else {
           setErr("");
 
@@ -206,7 +206,7 @@ const Form = () => {
           setErr({ timerun3: "Time Run is required" });
 
         } else if (!time.test(value)) {
-          setErr({ timerun1: "Enter in this HH:MM format" });
+          setErr({ timerun3: "Enter in this HH:MM format" });
         }
         else {
           setErr("");
@@ -556,42 +556,34 @@ const Form = () => {
 
   }
   const showModal = () => {
-    if (place === 'Kabini' && capacity.length < 1 &&
-      generation.length < 1 && timerun.length < 1 && dieselconsumption.length < 1
-      && capacity2.length < 1 && generation2.length < 1 && timerun2.length < 1 && dieselconsumption2.length < 1
-      && capacity3.length < 1 && generation3.length < 1 && timerun3.length < 1 && dieselconsumption3.length < 1
-      && kebrate.length < 1 && fuelrate.length < 1 && waterrate.length < 1 && pngrate.length < 1
-      && weathermin.length < 1 && weathermax.length < 1 && humidity.length < 1 && kitchenpng.length < 1
-      && waterconsumption.length < 1 && solargeneration.length < 1 && kebconsumption.length < 1) {
-      setShow(false);
+
+    if (place === 'Kabini') {
+      if (capacity.length > 0 &&
+        generation.length > 0 && timerun.length > 0 && dieselconsumption.length > 0
+        && capacity2.length > 0 && generation2.length > 0 && timerun2.length > 0 && dieselconsumption2.length > 0
+        && capacity3.length > 0 && generation3.length > 0 && timerun3.length > 0 && dieselconsumption3.length > 0
+        && kebrate.length > 0 && fuelrate.length > 0 && waterrate.length > 0 && pngrate.length > 0
+        && weathermin.length > 0 && weathermax.length > 0 && humidity.length > 0 && kitchenpng.length > 0
+        && waterconsumption.length > 0 && solargeneration.length > 0 && kebconsumption.length > 0) {
+
+        setShow(true);
+      } else {
+        setShow(false);
+      }
     }
-    else if (place === 'Kabini' && capacity.length > 1 &&
-      generation.length > 1 && timerun.length > 1 && dieselconsumption.length > 1
-      && capacity2.length > 1 && generation2.length > 1 && timerun2.length > 1 && dieselconsumption2.length > 1
-      && capacity3.length > 1 && generation3.length > 1 && timerun3.length > 1 && dieselconsumption3.length > 1
-      && kebrate.length > 1 && fuelrate.length > 1 && waterrate.length > 1 && pngrate.length > 1
-      && weathermin.length > 1 && weathermax.length > 1 && humidity.length > 1 && kitchenpng.length > 1
-      && waterconsumption.length > 1 && solargeneration.length > 1 && kebconsumption.length > 1) {
-      setShow(true);
-    }
-    else if ((place === 'Hampi' || place === 'Coorg') && capacity.length < 1 &&
-      generation.length < 1 && timerun.length < 1 && dieselconsumption.length < 1
-      && capacity2.length < 1 && generation2.length < 1 && timerun2.length < 1 && dieselconsumption2.length < 1
-      && kebrate.length < 1 && fuelrate.length < 1 && waterrate.length < 1 && pngrate.length < 1
-      && weathermin.length < 1 && weathermax.length < 1 && humidity.length < 1 && kitchenpng.length < 1
-      && waterconsumption.length < 1 && solargeneration.length < 1 && kebconsumption.length < 1) {
-      setShow(false);
-    }
-    else if ((place === 'Hampi' || place === 'Coorg') && capacity.length > 1 &&
-      generation.length > 1 && timerun.length > 1 && dieselconsumption.length > 1
-      && capacity2.length > 1 && generation2.length > 1 && timerun2.length > 1 && dieselconsumption2.length > 1
-      && kebrate.length > 1 && fuelrate.length > 1 && waterrate.length > 1 && pngrate.length > 1
-      && weathermin.length > 1 && weathermax.length > 1 && humidity.length > 1 && kitchenpng.length > 1
-      && waterconsumption.length > 1 && solargeneration.length > 1 && kebconsumption.length > 1) {
-      setShow(true);
-    }
-    else {
-      setShow(false);
+    else{
+      if (capacity.length > 0 &&
+        generation.length > 0 && timerun.length > 0 && dieselconsumption.length > 0
+        && capacity2.length > 0 && generation2.length > 0 && timerun2.length > 0 && dieselconsumption2.length > 0
+        && kebrate.length > 0 && fuelrate.length > 0 && waterrate.length > 0 && pngrate.length > 0
+        && weathermin.length > 0 && weathermax.length > 0 && humidity.length > 0 && kitchenpng.length > 0
+        && waterconsumption.length > 0 && solargeneration.length > 0 && kebconsumption.length > 0) {
+          console.log(capacity.length);
+        setShow(true);
+      }
+      else{
+        setShow(false);
+      }
     }
 
   }
@@ -665,6 +657,7 @@ const Form = () => {
       kebconsumption: kebconsumption
 
     }
+
     if (place === 'Kabini') {
       data.generator.push({
         generatorname: "Generator 3",
