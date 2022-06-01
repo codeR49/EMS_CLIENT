@@ -1,5 +1,5 @@
 .title{
-   font: normal normal bold 33px/42px Georgia;
+   font: normal normal bold 30px Georgia;
     letter-spacing: 0px;
     color: #9A7036;
     opacity: 1;
@@ -206,6 +206,7 @@
     background: #F1844D 0% 0% no-repeat padding-box;
     border-radius: 4px;
     opacity: 1;
+    cursor: pointer;
     }
 
     .containermain{
@@ -217,7 +218,7 @@
         width: 1000px;
         height: auto;
         align-items: center;
-      
+      border-radius: 20px;
         background-color: white;
     }
     .selectiondiv{
@@ -299,7 +300,7 @@
         margin-left: 10%;
     }
     .title{
-        font-size: x-large;
+        font-size: large;
         text-align: center;
     }
    

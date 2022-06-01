@@ -8,7 +8,7 @@ const Modal = ({ handleClose, show, loadPage, children }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
   const value = children.props.children
   return (
-    <div className={showHideClassName}>
+    <div className={showHideClassName} >
       <section className='modal-main'>
         {children}
         {value === "Data Submitted Successfully" ?
@@ -703,8 +703,9 @@ const Form = () => {
 
           <form className='form ' onSubmit={submitForm}>
             <div className='selectiondiv'>
-              <h3 style={{ color: "#9A7036" }}>{place}</h3>
+              <h3 style={{ color: "#9A7036"  , borderBottom:"1px solid red"}}>Location : {place}</h3>
             </div>
+         
 
             <div className='main2'>
               <div className='heading'>
@@ -895,7 +896,7 @@ const Form = () => {
             </div>
 
           </form>
-          <Modal show={show} handleClose={hideModal} loadPage={refreshPage}>
+          <Modal show={show} handleClose={hideModal} loadPage={refreshPage} >
             {modalMessage === "Data Submitted Successfully" ?
               <p style={{ color: "#9A7033", fontSize: "18px", textAlign: "center", fontFamily: "Georgia" }}>{modalMessage}</p>
 
