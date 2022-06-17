@@ -19,15 +19,15 @@ const Signin = () => {
     const btnstyle = { margin: '30px 0', color: "white" }
     const txtstyle = { margin: "10px 0" }
     const signintxtStyle = { marginTop: "40px" }
-    let [username, setUsername] = useState('');
+    let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
     let [errorMessage, setErrorMessage] = useState("");
     const [isPasswordShow, setIsPasswordShow] = useState(false);
 
     let message = <h5>Not Logged in</h5>;
     let navigate = useNavigate();
-    let onchangeusernamehandler = (event) => {
-        setUsername(event.target.value);
+    let onchangeemailhandler = (event) => {
+        setEmail(event.target.value);
     }
     let onchangepasswordhandler = (event) => {
         setPassword(event.target.value);
@@ -37,7 +37,7 @@ const Signin = () => {
     let submithandler = (event) => {
         event.preventDefault();
         let formdata = {
-            username: username,
+            email: email,
             password: password
         };
         Axios.post(DevelopmentUrl + '/users/login', formdata).then(
@@ -68,7 +68,7 @@ const Signin = () => {
         ).catch(error => {
             console.log("error occured")
             console.log(error.data)
-            setErrorMessage("Enter valid Username and Password");
+            setErrorMessage("Enter valid Email and Password");
         })
     }
     const toggleIsPasswordShowValue = () => {
@@ -91,7 +91,7 @@ const Signin = () => {
                                     <h2 style={{ color: "#9a7036" }}>Log In</h2>
                                 </Grid>
 
-                                <TextField label='Username' placeholder='Enter username' type='text' id='username' fullWidth style={signintxtStyle} onChange={onchangeusernamehandler} />
+                                <TextField label='Email' placeholder='Enter email' type='email' id='email' fullWidth style={signintxtStyle} onChange={onchangeemailhandler} />
                                 <TextField label='Password' placeholder='Enter password' type={ isPasswordShow ? 'text' : 'password'} id='password' fullWidth style={txtstyle} onChange={onchangepasswordhandler} />
 
                                 {password && (
