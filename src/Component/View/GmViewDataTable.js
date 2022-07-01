@@ -95,7 +95,7 @@ function GmViewDataTable() {
     let filterArray = consumeData.filter(function (el) {
       return el.location === location &&
         el.date >= datefrom &&
-        el.date <= dateto// Changed this so a home would match
+        el.date <= dateto
     });
     filterArray.length > 0 ? setShow(false) : setShow(true)
     setFilter(filterArray);
@@ -140,17 +140,7 @@ function GmViewDataTable() {
     setRemark(e.target.value)
 
   }
-  // function Mybutton({ value, onClick, style }) {
-  //   return (<button style={{
-  //     backgroundColor: `${style}`, cursor: "pointer", border: "none", color: "white", width: "80px", borderRadius: "4px", height: "30px", marginleft: "5px",
-  //     marginright: "5px",
-  //   }}
-  //     onClick={() => onClick()}
-  //   >
-  //     {value}
-  //   </button>)
-  // }
-
+  
   return (
     <>
       <div className='mainContainer'>
@@ -180,7 +170,7 @@ function GmViewDataTable() {
           <br />
 
           {
-            filter.length > 0 && datefrom < dateto ? <>
+            filter.length > 0 && datefrom <= dateto ? <>
               <table >
                 <tr>
                   <th >Action</th>
@@ -198,7 +188,7 @@ function GmViewDataTable() {
                     </table>
 
                   </th>
-                  <th>Kitchen (PNG)</th>
+                  <th>Kitchen (LPG)</th>
                   <th>Water consumption</th>
                   <th>Weather Parameters</th>
                   <th>Rate Matrix</th>
@@ -210,7 +200,7 @@ function GmViewDataTable() {
                     return (
                       <>
                         <tr>
-
+                          
                           <td>
                             {data.status === true ? "Approved" : <button type="submit" className='btnpending' onClick={() => showModal(data._id)}>Pending</button>}
 
@@ -257,7 +247,7 @@ function GmViewDataTable() {
                                           <td style={{
                                             fontSize: "12px",
                                             fontFamily: "Georgia, Regular"
-                                          }}>{details.dieselconsumption.$numberDecimal} Ltrs</td>
+                                          }}>{details.dieselconsumption} Ltrs</td>
                                         </tr>
 
                                       </>
@@ -370,7 +360,7 @@ function GmViewDataTable() {
                               <tr><td style={{
                                 fontSize: "12px",
                                 fontFamily: "Georgia, Regular"
-                              }}>PNG </td>
+                              }}>LPG </td>
                                 <td style={{
                                   fontSize: "12px",
                                   fontFamily: "Georgia, Regular"
