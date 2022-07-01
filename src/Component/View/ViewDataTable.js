@@ -68,7 +68,7 @@ function ViewDataTable() {
     let filterArray = consumeData.filter(function (el) {
       return el.location === location &&
         el.date >= datefrom &&
-        el.date <= dateto// Changed this so a home would match
+        el.date <= dateto
     });
     filterArray.length > 0 ? setShow(false) : setShow(true)
     setFilter(filterArray);
@@ -137,7 +137,7 @@ function ViewDataTable() {
           <br />
 
           {
-            filter.length > 0 && datefrom < dateto ? <>
+            filter.length > 0 && datefrom <= dateto ? <>
               {/* <button className='btnsearch' style={{marginl}}>Export Data</button> */}
               <table >
                 <tr>
@@ -155,7 +155,7 @@ function ViewDataTable() {
                     </table>
 
                   </th>
-                  <th>Kitchen (PNG)</th>
+                  <th>Kitchen (LPG)</th>
                   <th>Water consumption</th>
                   <th>Weather Parameters</th>
                   <th>Rate Matrix</th>
@@ -168,7 +168,6 @@ function ViewDataTable() {
                     return (
                       <>
                         <tr>
-                          {/* {console.log(typeof(data.date))} */}
                           <td style={{
                             fontSize: "12px",
                             fontFamily: "Georgia, Regular"
@@ -212,7 +211,7 @@ function ViewDataTable() {
                                           <td style={{
                                             fontSize: "12px",
                                             fontFamily: "Georgia, Regular"
-                                          }}>{details.dieselconsumption.$numberDecimal} Ltrs</td>
+                                          }}>{details.dieselconsumption} Ltrs</td>
                                         </tr>
 
                                       </>
@@ -240,8 +239,6 @@ function ViewDataTable() {
                                   </tr>
 
                                 </table>
-
-
 
                               </tr>
                             </table>
@@ -325,7 +322,7 @@ function ViewDataTable() {
                               <tr><td style={{
                                 fontSize: "12px",
                                 fontFamily: "Georgia, Regular"
-                              }}>PNG </td>
+                              }}>LPG </td>
                                 <td style={{
                                   fontSize: "12px",
                                   fontFamily: "Georgia, Regular"
