@@ -1166,40 +1166,53 @@ const Form = () => {
           </div>
           <Modal modalMessage={modalMessage} show={show} handleClose={hideModal} handleSubmit={submitForm} loadPage={refreshPage}>
             
-            <p>Generator 1</p>
-            <p>Capacity: {capacity}</p>
-            <p>Generation: {generation}</p>
-            <p>Time Run: {timerun}</p>
-            <p>Diesel Consumption: {dieselconsumption}</p>
-            <p>Generator 2</p>
-            <p>Capacity: {capacity2}</p>
-            <p>Generation: {generation2}</p>
-            <p>Time Run: {timerun2}</p>
-            <p>Diesel Consumption: {dieselconsumption2}</p>
+       
+           <h5>Generator 1</h5>
+          
+            <p>Capacity : {capacity}</p>
+            <p>Generation : {generation}</p>
+            <p>Time Run : {timerun}</p>
+            <p>Diesel Consumption : {dieselconsumption}</p>
+            <hr/>
+            <h5>Generator 2</h5>
+           
+            <p>Capacity : {capacity2}</p>
+            <p>Generation : {generation2}</p>
+            <p>Time Run : {timerun2}</p>
+            <p>Diesel Consumption : {dieselconsumption2}</p>
             {place === "Kabini" ? (
               <>
-                <p>Generator 3</p>
-                <p>Capacity: {capacity3}</p>
-                <p>Generation: {generation3}</p>
-                <p>Time Run: {timerun3}</p>
-                <p>Diesel Consumption: {dieselconsumption3}</p>
+                    <hr/>
+                <h5>Generator 3</h5>
+          
+                <p>Capacity : {capacity3}</p>
+                <p>Generation : {generation3}</p>
+                <p>Time Run : {timerun3}</p>
+                <p>Diesel Consumption : {dieselconsumption3}</p>
+          
               </>
             ) : (
               ""
             )}
-            <p>Rate Matrix</p>
-            <p>KEB: {kebrate}</p>
-            <p>Fuel: {fuelrate}</p>
-            <p>Water: {waterrate}</p>
-            <p>LPG: {pngrate}</p>
-            <p>Weather Parameters</p>
-            <p>Min Temp: {weathermin}</p>
-            <p>Max Temp: {weathermax}</p>
-            <p>Humidity: {humidity}</p>
-            <p>LPG Consumption: {kitchenpng}</p>
-            <p>Water Consumption: { waterconsumption}</p>
-            <p>Solar Generation: {solargeneration}</p>
-            <p>KEB Consumption: {kebconsumption}</p>
+               <hr/>  
+            <h5>Rate Matrix</h5>
+            
+            <p>KEB : {kebrate}</p>
+            <p>Fuel : {fuelrate}</p>
+            <p>Water : {waterrate}</p>
+            <p>LPG : {pngrate}</p>
+            <hr/>
+            <h5>Weather Parameters</h5>
+            
+            <p>Min Temp : {weathermin}</p>
+            <p>Max Temp : {weathermax}</p>
+            <p>Humidity : {humidity}</p>
+            <hr/>
+            <p>LPG Consumption : {kitchenpng}</p>
+            <p>Water Consumption : { waterconsumption}</p>
+            <p>Solar Generation : {solargeneration}</p>
+            <p>KEB Consumption : {kebconsumption}</p>
+        
             {modalMessage === "Data Submitted Successfully" ? (
               <p
                 style={{
