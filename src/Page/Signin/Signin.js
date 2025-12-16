@@ -4,7 +4,7 @@ import { Grid, Paper, TextField, Button } from '@material-ui/core'
 import DevelopmentUrl from '../../data/api';
 import Axios from 'axios';
 import jwt_decode from "jwt-decode";
-import imglogo from '../../image/logo.png'
+import imglogo from '../../image/logo.jpg'
 
 import "../Signin/Signin.css";
 

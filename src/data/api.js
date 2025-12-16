@@ -1,2 +1,2 @@
-const DevelopmentUrl = "http://127.0.0.1:7000";
+const DevelopmentUrl = "http://localhost:8080";
 module.exports =  DevelopmentUrl;
